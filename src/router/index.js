@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Hire from '../views/Hire.vue'
 import Profile from '../views/Profile.vue'
+import Chat from '../views/Chat.vue'
 
 import Home from '../views/Home.vue'
 
@@ -47,6 +48,11 @@ const routes = [
     path: '/hire',
     name: 'Hire',
     component: Hire
+  },
+  {
+    path: '/chat',
+    name: 'Chat',
+    component: Chat
   }
 ]
 

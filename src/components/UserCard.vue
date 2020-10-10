@@ -41,6 +41,7 @@ export default {
   background-image: url(../assets/img/soda.jpeg);
   background-size: cover;
   height: 130px;
+  border-radius: 70px;
 }
 .user-data {
   width: 100%;
