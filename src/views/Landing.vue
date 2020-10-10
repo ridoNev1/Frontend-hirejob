@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid">
+    <Navbar />
     <div>
       <b-col lg="12" sm="12" cols="12" class="landing-top mb-5">
         <b-row>
@@ -252,10 +253,12 @@
 </template>
 
 <script>
+import Navbar from '../components/Navbar'
 
 export default {
   name: 'Home',
   components: {
+    Navbar
   }
 }
 </script>
