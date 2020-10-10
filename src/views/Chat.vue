@@ -3,7 +3,7 @@
     <Navbar />
     <div class="chatCol">
       <b-row style="background: #f6f7f8" class="no-gutters">
-        <b-col lg="6">
+        <b-col lg="4">
           <div class="chatUser mt-3">
             <h5 class="ml-3 pt-4 pb-2">Chat</h5>
             <hr />
@@ -79,15 +79,15 @@
             </div>
           </div>
         </b-col>
-        <b-col lg="6" class="mt-3">
-          <div class="card cardStyle" style="width: 40rem">
+        <b-col lg="8" class="mt-3">
+          <div class="card cardStyle">
             <div class="ml-3 chatImgUser">
               <img style="width: 50px; height: 50px; border-radius: 70px; margin-top: 10px;" src="../assets/img/soda.jpeg" alt="Card image cap" />
               <h5 class="ml-3" style="margin-top: 20px">Soda</h5>
             </div>
             <hr style="margin-top: 10px;">
             <div class="card-body Message">
-              <p>Lagi pengen nih..</p>
+              <p>Lagi pengen nih :(</p>
             </div>
             <div>
               <form @submit.prevent="sendMessage()">
@@ -137,6 +137,7 @@ export default {
     }
 .cardStyle{
   margin-left: 30px;
+  width: 56rem;
 }
 .card {
   border: none;
@@ -152,7 +153,7 @@ export default {
   border-color: #f6f7f8;
 }
 .chatUser {
-  margin-left: 10%;
+  margin-left: 15%;
   background: #ffffff;
 }
 .profile-image {
