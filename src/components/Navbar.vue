@@ -19,6 +19,9 @@ export default {
 </script>
 
 <style scoped>
+.navbar-box {
+  background-color: #fff;
+}
 .navbar-page {
   padding: 15px;
 }

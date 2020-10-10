@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Landing from '../views/Landing.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
+import Portofolio from '../views/Portofolio.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: Register
+  },
+  {
+    path: '/portofolio',
+    name: 'Portofolio',
+    component: Portofolio
   }
 ]
 
