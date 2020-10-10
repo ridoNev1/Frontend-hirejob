@@ -25,7 +25,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .user-card {
   width: 320px;
   height: 100%;
