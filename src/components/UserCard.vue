@@ -27,7 +27,7 @@ export default {
 
 <style>
 .user-card {
-  width: 357px;
+  width: 320px;
   height: 100%;
   background: #FFFFFF;
   border-radius: 5px;
