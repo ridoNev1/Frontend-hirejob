@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Landing from '../views/Landing.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
+import Hire from '../views/Hire.vue'
 
 import Home from '../views/Home.vue'
 
@@ -35,6 +36,11 @@ const routes = [
     path: '/portofolio',
     name: 'Portofolio',
     component: Portofolio
+  },
+  {
+    path: '/hire',
+    name: 'Hire',
+    component: Hire
   }
 ]
 
