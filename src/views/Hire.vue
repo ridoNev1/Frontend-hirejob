@@ -4,19 +4,8 @@
     <b-row style="background: #f6f7f8" class="no-gutters">
       <b-col lg="5" class="mt-3">
         <div class="profileHire">
-          <img class="rounded-circle" src="../assets/img/soda.jpeg" alt="" />
-          <h3 class="mt-2">DJ SODA</h3>
-          <h5>Sexy adalah jalan DJ ku</h5>
-          <p>Pekalongan City</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. In,
-            incidunt optio dignissimos impedit aperiam consequatur nemo eveniet
-            id maiores aliquid atque aliquam, autem perspiciatis, labore hic
-            tempora sequi. Veritatis, reprehenderit.
-          </p>
-          <h2>Skill</h2>
-          <div class="buttonSkill">
-            <b-button class="mr-3 mb-3">PHP</b-button>
+          <div class="userCard">
+            <UserCard/>
           </div>
         </div>
       </b-col>
@@ -64,15 +53,20 @@
 <script>
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import UserCard from '../components/UserCard'
 export default {
   components: {
     Navbar,
-    Footer
+    Footer,
+    UserCard
   }
 }
 </script>
 
 <style scoped>
+.userCard{
+  margin-left: 10%;
+}
 button {
   background: #fbb017;
   border-radius: 4px;
