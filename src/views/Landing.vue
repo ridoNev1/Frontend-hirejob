@@ -1,6 +1,7 @@
 <template>
-  <div class="container-fluid">
+  <div>
     <Navbar />
+    <div class="container-fluid">
     <div>
       <b-col lg="12" sm="12" cols="12" class="landing-top mb-5">
         <b-row>
@@ -250,6 +251,8 @@
 
     </div>
   </div>
+  </div>
+
 </template>
 
 <script>
