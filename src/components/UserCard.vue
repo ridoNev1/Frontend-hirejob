@@ -38,7 +38,7 @@ export default {
 }
 .profile-image {
   width: 130px;
-  background-image: url(../assets/img/userpreviewfoto.png);
+  background-image: url(../assets/img/soda.jpeg);
   background-size: cover;
   height: 130px;
 }
