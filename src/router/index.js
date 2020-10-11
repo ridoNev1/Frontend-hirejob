@@ -8,6 +8,7 @@ import RegisRekrut from '../views/RegisterRekrut.vue'
 import Hire from '../views/Hire.vue'
 import Profile from '../views/Profile.vue'
 import Chat from '../views/Chat.vue'
+import ProfileRecrut from '../views/ProfileRecrut'
 
 import Home from '../views/Home.vue'
 
@@ -50,6 +51,11 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile
+  },
+  {
+    path: '/profilerecrut',
+    name: 'ProfileRecrut',
+    component: ProfileRecrut
   },
   {
     path: '/portofolio',

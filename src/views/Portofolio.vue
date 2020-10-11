@@ -15,8 +15,18 @@
               <div class="portofolio-pict"><span></span></div>
               <div class="portofolio-pict"><span></span></div>
             </div>
-            <div class="exprerience" v-else>
-
+            <div class="exprerience mt-4" v-else>
+              <div class="experience-list">
+                <div class="company-profile">
+                  <span></span>
+                </div>
+                <div class="experiece-bio">
+                  <h4 class="font-weight-bold">Engginer</h4>
+                  <h6>Tokopedia</h6>
+                  <h6 class="text-secondary">July 2019 - January 2020 6 months</h6>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -53,6 +63,7 @@ export default {
         tgl1.classList.toggle('switch-nav2')
         this.switchToggle = 1
       }
+      this.switchContent = 0
     },
     switchToggle2 () {
       if (this.switchToggle === 1) {
@@ -66,6 +77,7 @@ export default {
         tgl2.classList.toggle('switch-nav2')
         this.switchToggle = 1
       }
+      this.switchContent = 1
     }
   },
   mounted () {
@@ -134,5 +146,18 @@ export default {
   background-image: url(../assets/img/portofolio.png);
   background-size: cover;
   border-radius: 4px;
+}
+.company-profile {
+  width: 74px;
+  height: 74px;
+  background-image: url(../assets/img/tokped.png);
+  background-size: cover;
+
+}
+.experience-list {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  border-bottom: 1px solid #E2E5ED;
+  margin-bottom: 12px;
 }
 </style>
