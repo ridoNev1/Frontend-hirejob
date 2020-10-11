@@ -2,7 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Landing from '../views/Landing.vue'
 import Login from '../views/Login.vue'
+import LoginRekrut from '../views/LoginRekrut.vue'
 import Register from '../views/Register.vue'
+import RegisRekrut from '../views/RegisterRekrut.vue'
 import Hire from '../views/Hire.vue'
 import Profile from '../views/Profile.vue'
 import Chat from '../views/Chat.vue'
@@ -31,9 +33,19 @@ const routes = [
     component: Login
   },
   {
+    path: '/loginrekrut',
+    name: 'LoginRekrut',
+    component: LoginRekrut
+  },
+  {
     path: '/register',
     name: 'Register',
     component: Register
+  },
+  {
+    path: '/regisrekrut',
+    name: 'RegisRekrut',
+    component: RegisRekrut
   },
   {
     path: '/profile',

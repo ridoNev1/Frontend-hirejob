@@ -1,14 +1,14 @@
 <template>
   <div>
-    <Login type="pelamar"/>
+    <Register type="perekrut"/>
   </div>
 </template>
 
 <script>
-import Login from '../components/Login'
+import Register from '../components/Register'
 export default {
   components: {
-    Login
+    Register
   }
 }
 </script>

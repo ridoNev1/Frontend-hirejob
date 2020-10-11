@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Login type="pelamar"/>
+    <Login type="perekrut"/>
   </div>
 </template>
 
