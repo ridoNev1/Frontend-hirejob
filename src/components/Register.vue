@@ -19,7 +19,7 @@
               recusandae, sit quas architecto expedita repudiandae natus animi
               consequuntur libero neque.
             </p>
-            <b-form @submit.prevent="onRegister()">
+            <b-form @submit.prevent="onRegisLamar()">
               <b-form-text>Nama</b-form-text>
               <b-input
                 type="text"
@@ -83,7 +83,7 @@
               recusandae, sit quas architecto expedita repudiandae natus animi
               consequuntur libero neque.
             </p>
-            <b-form @submit.prevent="onRegister()">
+            <b-form @submit.prevent="onRegisRekrut()">
               <b-form-text>Nama</b-form-text>
               <b-input
                 type="text"
@@ -161,14 +161,21 @@ export default {
     }
   },
   methods: {
-    onRegister () {
+    onRegisLamar () {
       console.log(this.form.nama)
       console.log(this.form.email)
       console.log(this.form.handphone)
       console.log(this.form.password)
       console.log(this.form.password2)
-      console.log(this.form.company)
+    },
+    onRegisRekrut () {
+      console.log(this.form.nama)
+      console.log(this.form.email)
+      console.log(this.form.handphone)
+      console.log(this.form.password)
+      console.log(this.form.password2)
       console.log(this.form.position)
+      console.log(this.form.company)
     }
   },
   props: ['type']

@@ -18,7 +18,7 @@
             recusandae, sit quas architecto expedita repudiandae natus animi
             consequuntur libero neque.
           </p>
-          <b-form @submit.prevent="onLogin()">
+          <b-form @submit.prevent="onLoginPelamar()">
             <b-form-text>Email</b-form-text>
             <b-input
               type="text"
@@ -59,7 +59,7 @@
             recusandae, sit quas architecto expedita repudiandae natus animi
             consequuntur libero neque.
           </p>
-          <b-form @submit.prevent="onLogin()">
+          <b-form @submit.prevent="onLoginPerekrut()">
             <b-form-text>Email</b-form-text>
             <b-input
               type="text"
@@ -96,7 +96,11 @@ export default {
     }
   },
   methods: {
-    onLogin () {
+    onLoginPelamar () {
+      console.log(this.form.email)
+      console.log(this.form.password)
+    },
+    onLoginPerekrut () {
       console.log(this.form.email)
       console.log(this.form.password)
     }
