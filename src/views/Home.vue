@@ -57,15 +57,20 @@
         </b-col>
         </div>
         </div>
+
+            <Footer />
+
     </div>
 </template>
 <script>
 import Navbar from '../components/Navbar'
 import CardHome from '../components/CardHome'
+import Footer from '../components/Footer'
 export default {
   components: {
     Navbar,
-    CardHome
+    CardHome,
+    Footer
   }
 }
 </script>
