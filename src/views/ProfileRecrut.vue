@@ -9,7 +9,7 @@
                         <UserCard />
                     </b-col>
                     <b-col class="edit-profile" lg="8" cols="12">
-                        <EditProfile type="profile"/>
+                        <EditProfile type="profilerecrut"/>
                     </b-col>
                 </b-row>
             </b-col>
