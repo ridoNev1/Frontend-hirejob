@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background: #f6f7f8">
     <Register type="perekrut"/>
   </div>
 </template>
