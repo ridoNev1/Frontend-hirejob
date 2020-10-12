@@ -1,51 +1,54 @@
 <template>
-  <div>
+  <div style="background: #f6f7f8">
     <Navbar />
-    <b-row style="background: #f6f7f8" class="no-gutters">
+    <div class="container">
+
+    <b-row class="no-gutters">
       <b-col lg="5" class="mt-3">
-        <div class="profileHire">
-          <div class="userCard">
             <UserCard/>
-          </div>
-        </div>
       </b-col>
-      <b-col lg="7" class="mt-3">
+      <b-col lg="7" class="mt-3 formSize">
         <div class="divHire">
-        <h2>Hubungi DJ SODA</h2>
-        <h5>
+        <h2 style="font-weight: bold">Hubungi DJ SODA</h2>
+        <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
           recusandae quo qui at neque repellat, nemo quisquam ratione dolorem
           laudantium! Dignissimos, libero ea facilis iure maiores accusantium
           expedita vel consectetur?
-        </h5>
+        </p>
 
         <b-form @submit.prevent="onHire()">
             <b-form-text>Tujuan tentang posisi ini</b-form-text>
-            <b-form-select v-model="selected" :options="options"></b-form-select>
+            <b-form-select class="mb-4" v-model="selected" :options="options"></b-form-select>
             <b-form-text>Nama Lengkap</b-form-text>
             <b-input
               type="text"
               placeholder="Masukan nama lengkap"
               autofocus
+              class="mb-4"
             ></b-input>
             <b-form-text>Email</b-form-text>
             <b-input
               type="text"
               placeholder="Masukan email"
+              class="mb-4"
             ></b-input>
             <b-form-text>No Handphone</b-form-text>
             <b-input
               type="number"
+              class="mb-4"
               placeholder="Masukan no handphone"
             ></b-input>
             <b-form-text>Deskripsi</b-form-text>
             <b-form-textarea placeholder="Deskripsikan jelaskan lebih detail" rows="8"></b-form-textarea>
-            <b-button @click="onHire()" class="mt-4" block>Hire</b-button>
+            <button class="mt-4" block>Hire</button>
           </b-form>
 
         </div>
       </b-col>
     </b-row>
+    </div>
+
     <Footer/>
   </div>
 </template>
@@ -64,6 +67,9 @@ export default {
 </script>
 
 <style scoped>
+.formSize{
+  margin-bottom: 20%;
+}
 .userCard{
   margin-left: 10%;
 }
@@ -71,6 +77,7 @@ button {
   background: #fbb017;
   border-radius: 4px;
   border-color: #ffffff;
+  width: 100%;
 }
 button:hover {
   background: #ffffff;

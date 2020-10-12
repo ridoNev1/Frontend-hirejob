@@ -141,8 +141,8 @@ border-radius: 8px;
     padding-left: 40%;
 }
 @media only screen and (max-width: 600px) {
-  .pagination-component {
-    padding: 0;
-  }
+  .pagination-component{
+    padding-left: 20%;
+}
 }
 </style>

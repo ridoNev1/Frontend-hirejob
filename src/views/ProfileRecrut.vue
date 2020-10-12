@@ -1,19 +1,27 @@
 <template>
     <div>
         <Navbar />
-<!-- <div class="top-bg fluid"> -->
             <div class="container-fluid">
             <b-col lg="12" class="profile py-5">
-                    <b-row class="content mx-5">
-                    <b-col lg="4" cols="12" class="user-card">
+                    <b-row class="content">
+                    <b-col lg="4" cols="12" class="user-card text-center">
                         <UserCard />
+                        <b-row class="text-left">
+                          <b-col lg="12" class="my-3">
+                            <button class="btn btn-save">Simpan</button>
+                          </b-col>
+                          <b-col lg="12" class="my-3">
+                           <button class="btn btn-cancel">Batal</button>
+                          </b-col>
+                        </b-row>
+
                     </b-col>
                     <b-col class="edit-profile" lg="8" cols="12">
                         <EditProfile type="profilerecrut"/>
                     </b-col>
                 </b-row>
             </b-col>
-      </div>
+          </div>
       <div>
           <Footer />
       </div>
@@ -42,12 +50,47 @@ export default {
     .container-fluid{
         background: #F6F7F8;
     }
+  .profile-bg {
+  background-color: #5E50A1;
+  border-radius: 8px 8px 0 0;
+  padding-left: 50px;
+  padding-top: 30px;
+  /* height: 40px; */
+}
     .top-bg{
         background: #5E50A1;
         height: 200px;
     }
     .user-card{
         height: 600px;
+        padding-left: 5%;
+    }
+    .btn-save{
+      width: 90%;
+      color: white;
+      background: #5E50A1;
+border-radius: 4px;
+    }
+    .edit-profile{
+      padding-right: 8%;
+    }
+    .btn-save:hover{
+      color: #5E50A1;
+      background: white;
+border-radius: 4px;
+border: 1px solid #5E50A1;
+    }
+    .btn-cancel{
+      width: 90%;
+      border: 1px solid #5E50A1;
+      box-sizing: border-box;
+      border-radius: 4px;
+    }
+    .btn-cancel:hover{
+      color: white;
+      background: #5E50A1;
+border-radius: 4px;
+border: 1px solid #5E50A1;
     }
     /* .profile{
         padding: 0px 5px;
@@ -55,7 +98,19 @@ export default {
     } */
     @media only screen and (max-width: 600px) {
   .edit-profile {
-    margin-top: 25px;
+    margin-top: 150px;
   }
+  .user-card{
+        padding-left: 15%;
+    }
+  .btn-cancel{
+      width: 90%;
+    }
+     .edit-profile{
+      padding-right: 0;
+    }
+    .btn-save{
+      width: 90%;
+    }
 }
 </style>

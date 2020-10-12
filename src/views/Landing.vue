@@ -26,36 +26,36 @@
           </b-col>
           <b-col lg="7"  sm="12" cols="12" class="text-left why-peworld">
             <h1>Kenapa harus mencari tallent di peworld</h1>
-            <b-row class="pl-5 mt-4">
+            <b-row class="mt-4">
               <b-col lg="1" sm="1" cols="1" class="pl-4">
                 <img src="../assets/img/tick.svg" alt="">
               </b-col>
-              <b-col lg="11" sm="11" cols="11">
+              <b-col lg="11" sm="10" cols="10">
                 <p style="font-size:16px;">Lorem ipsum dolor sit amet.</p>
                 </b-col>
             </b-row>
             <!-- tick why -->
-            <b-row class="pl-5 mt-2">
+            <b-row class="mt-2">
               <b-col lg="1" sm="1" cols="1" class="pl-4">
                 <img src="../assets/img/tick.svg" alt="">
               </b-col>
-              <b-col lg="11" sm="11" cols="11">
+              <b-col lg="11" sm="10" cols="10">
                 <p style="font-size:16px;">Lorem ipsum dolor sit amet.</p>
                 </b-col>
             </b-row>
-            <b-row class="pl-5 mt-2">
+            <b-row class="mt-2">
               <b-col lg="1" sm="1" cols="1" class="pl-4">
                 <img src="../assets/img/tick.svg" alt="">
               </b-col>
-              <b-col lg="11" sm="11" cols="11">
+              <b-col lg="11" sm="10" cols="10">
                 <p style="font-size:16px;">Lorem ipsum dolor sit amet.</p>
                 </b-col>
             </b-row>
-            <b-row class="pl-5 mt-2">
+            <b-row class="mt-2">
               <b-col lg="1" sm="1" cols="1" class="pl-4">
                 <img src="../assets/img/tick.svg" alt="">
               </b-col>
-              <b-col lg="11" sm="11" cols="11">
+              <b-col lg="11" sm="10" cols="10">
                 <p style="font-size:16px;">Lorem ipsum dolor sit amet.</p>
                 </b-col>
             </b-row>
@@ -317,8 +317,12 @@ box-shadow: 0px 8px 16px rgba(197, 197, 197, 0.25);
 border-radius: 40px 8px;
   }
   .start-now button{
+    border: 1px solid #5E50A1;
     background: #FFFFFF;
 border-radius: 4px;
+  }
+  .start-now button:hover{
+   color: black;
   }
   /* .avatar{
     background: rgba(251, 176, 23, 0.37);
@@ -331,6 +335,9 @@ border-radius: 4px;
     display: none;
   } */
   .img-bottom{
+    display: none;
+  }
+  .img-center{
     display: none;
   }
   .skill-talent{

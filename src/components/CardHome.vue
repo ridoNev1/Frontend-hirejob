@@ -39,10 +39,21 @@ padding-left: 4px;
   height: 100px;
   background-image: url('../assets/img/udin.jpg');
   background-size: cover;
+  margin-left: 10px;
+}
+.card-home:hover{
+  opacity: 0.7;
+  cursor: pointer;
 }
 @media only screen and (max-width: 600px) {
   .card-home {
     text-align: left;
+  }
+  h3{
+    font-size: 23px;
+  }
+  .img-card{
+    margin-left: 20px;
   }
 }
 </style>

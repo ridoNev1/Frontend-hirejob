@@ -1,10 +1,9 @@
 <template>
     <div>
         <Navbar />
-<!-- <div class="top-bg fluid"> -->
             <div class="container-fluid">
             <b-col lg="12" class="profile py-5">
-                    <b-row class="content mx-5">
+                    <b-row class="content">
                     <b-col lg="4" cols="12" class="user-card text-center">
                         <UserCard />
                         <b-row class="text-left">
@@ -22,7 +21,7 @@
                     </b-col>
                 </b-row>
             </b-col>
-      </div>
+          </div>
       <div>
           <Footer />
       </div>
@@ -51,18 +50,29 @@ export default {
     .container-fluid{
         background: #F6F7F8;
     }
+  .profile-bg {
+  background-color: #5E50A1;
+  border-radius: 8px 8px 0 0;
+  padding-left: 50px;
+  padding-top: 30px;
+  /* height: 40px; */
+}
     .top-bg{
         background: #5E50A1;
         height: 200px;
     }
     .user-card{
         height: 600px;
+        padding-left: 5%;
     }
     .btn-save{
       width: 90%;
       color: white;
       background: #5E50A1;
 border-radius: 4px;
+    }
+    .edit-profile{
+      padding-right: 8%;
     }
     .btn-save:hover{
       color: #5E50A1;
@@ -90,11 +100,17 @@ border: 1px solid #5E50A1;
   .edit-profile {
     margin-top: 150px;
   }
+  .user-card{
+        padding-left: 15%;
+    }
   .btn-cancel{
-      width: 100%;
+      width: 90%;
+    }
+     .edit-profile{
+      padding-right: 0;
     }
     .btn-save{
-      width: 100%;
+      width: 90%;
     }
 }
 </style>

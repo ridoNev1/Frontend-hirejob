@@ -1,13 +1,16 @@
 <template>
 <div>
     <Navbar />
-    <div class="container-fluid ">
-      <b-col lg="12" class="profile-company my-5">
-          <b-row class="px-5 text-center">
-                <!-- <b-col lg="12" class="img-card">
-                    <span class="img"></span>
-                </b-col> -->
-                <b-col lg="12" >
+    <div class="content">
+        <div class="container-fluid my-5">
+        <b-col lg="12" class="company ">
+          <b-row class="profile-company text-center">
+                <div class="profile-bg my-5">
+                    <div class="profile-picture">
+                    <span></span>
+                    </div>
+                </div>
+                <b-col lg="12" class="mt-3">
                   <h1 style="font-size:22px">PT. Martabat Jaya Abadi
                     </h1>
                     <p>Financial</p>
@@ -60,6 +63,7 @@
           </b-row>
       </b-col>
     </div>
+    </div>
     <Footer />
     </div>
 </template>
@@ -77,6 +81,23 @@ export default {
     .container-fluid{
         background: #F6F7F8;
     }
+    .profile-picture {
+  width: 120px;
+  background-image: url(../assets/img/soda.jpeg);
+  background-size: cover;
+  height: 120px;
+  border-radius: 60px;
+  position: relative;
+  top: 50px;
+  margin-left: 43%;
+}
+.profile-bg {
+  background-color: #5E50A1;
+  border-radius: 8px 8px 0 0;
+  padding-left: 50px;
+  padding-top: 30px;
+  width: 100%;
+}
     .value p{
         color: #9EA0A5;
         font-size: 14px;
@@ -84,6 +105,7 @@ export default {
     .profile-company{
         background: #FFFFFF;
         border-radius: 8px;
+        margin: 40px;
     }
     .img-card{
   width: 130px;
@@ -107,5 +129,22 @@ border-radius: 4px;
     color:  #5E50A1;
     background: white;
 border-radius: 4px;
+}
+@media only screen and (max-width: 600px) {
+    .profile-picture {
+  width: 120px;
+  background-image: url(../assets/img/soda.jpeg);
+  background-size: cover;
+  height: 120px;
+  border-radius: 60px;
+  position: relative;
+  top: 50px;
+  margin-left: 27%;
+}
+.profile-company{
+        background: #FFFFFF;
+        border-radius: 8px;
+        margin: 0px;
+    }
 }
 </style>

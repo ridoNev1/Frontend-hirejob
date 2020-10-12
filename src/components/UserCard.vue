@@ -8,8 +8,8 @@
     </div>
     <div class="user-data mt-3">
       <div class="user-name">
-        <h5 class="font-weight-bold" style="margin-bottom: 0;">Louis Tomlinson</h5>
-        <p>Web Developer</p>
+        <h5 class="font-weight-bold" style="margin-bottom: 0;">DJ SODA</h5>
+        <p>DJ</p>
       </div>
       <div>
         <p class="text-secondary" style="margin-bottom: 0;"><img src="../assets/img/map-pin.png" alt="mappin"> Purwokerto, Jawa Tengah</p>
@@ -28,7 +28,7 @@ export default {
 <style scoped>
 .user-card {
   width: 320px;
-  height: 100%;
+  /* height: 100%; */
   background: #FFFFFF;
   border-radius: 5px;
   display: flex;
