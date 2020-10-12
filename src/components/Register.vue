@@ -11,7 +11,7 @@
         </b-col>
         <b-col lg="6">
           <div class="divForm">
-            <h2 class="textHello">Hello, Fuckin Noise</h2>
+            <h2 class="textHello">Halo, Pewpeople</h2>
             <h2 class="textLogin">Signup</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
@@ -79,7 +79,7 @@
         </b-col>
         <b-col lg="6">
           <div class="divForm">
-            <h2 class="textHello">Hello, Fuckin Noise</h2>
+            <h2 class="textHello">Halo, Pewpeople</h2>
             <h2 class="textLogin">Signup</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
