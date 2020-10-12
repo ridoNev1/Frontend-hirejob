@@ -6,7 +6,7 @@
       <span class="img"></span>
     </div>
     <b-card-text class="mt-3">
-      <h3>Riko Arafi</h3>
+      <h3>Udin Herman</h3>
         <p>Fullstack Developer</p>
           <img src="../assets/img/map-pin (4) 1.svg" alt="">
         Jakarta Timur
@@ -37,12 +37,23 @@ padding-left: 4px;
 .img-card{
   width: 100px;
   height: 100px;
-  background-image: url('../assets/img/card-img.jpg');
+  background-image: url('../assets/img/udin.jpg');
   background-size: cover;
+  margin-left: 10px;
+}
+.card-home:hover{
+  opacity: 0.7;
+  cursor: pointer;
 }
 @media only screen and (max-width: 600px) {
   .card-home {
     text-align: left;
+  }
+  h3{
+    font-size: 23px;
+  }
+  .img-card{
+    margin-left: 20px;
   }
 }
 </style>

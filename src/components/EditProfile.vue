@@ -4,9 +4,10 @@
         <!-- form pencari kerja -->
         <b-row class="users">
             <b-col lg="12" class="profile-user">
-                <b-row class="px-5">
-                    <h1 class="px-2 py-3">Data Diri</h1>
-                    <div class="line py-2"></div>
+                <b-row class="">
+                    <b-col lg="12">
+                    <h1 class="px-2 py-3" style="border-bottom: 1px solid #C4C4C4; font-size:25px;">Data Diri</h1>
+                    </b-col>
                     <b-col lg="12">
                         <form>
                             <div class="form-group">
@@ -35,8 +36,10 @@
             </b-col>
             <!-- skil -->
             <b-col lg="12" class="skill-search my-4">
-                <b-row class="input-search px-5">
-                    <h1 class="px-2 py-3">Skill</h1>
+                <b-row class="input-search ">
+                    <b-col lg="12">
+                    <h1 class="px-2 py-3" style="border-bottom: 1px solid #C4C4C4; font-size:25px;">Skill</h1>
+                    </b-col>
                     <b-col lg="12">
                         <div class="skill-list-box">
                             <p class="skill-list" v-for="(item, index) in dataSkill" :key="index">{{item}}</p>
@@ -51,8 +54,10 @@
 
             <!-- experience -->
             <b-col lg="12" class="experience my-4">
-                <b-row class="px-5">
-                    <h1 class="px-2 py-3">Pengalaman Kerja</h1>
+                <b-row class="">
+                     <b-col lg="12">
+                    <h1 class="px-2 py-3" style="border-bottom: 1px solid #C4C4C4; font-size:25px;">Pengalaman Kerja</h1>
+                    </b-col>
                     <div class="line py-2"></div>
                     <b-col lg="12">
                         <form>
@@ -93,8 +98,10 @@
 
             <!-- start portofolio -->
             <b-col lg="12" class="portofolio my-4">
-                <b-row class="px-5">
-                    <h1 class="px-2 py-3">Portofolio</h1>
+                <b-row class="">
+                    <b-col lg="12">
+                    <h1 class="px-2 py-3" style="border-bottom: 1px solid #C4C4C4; font-size:25px;">Portofolio</h1>
+                    </b-col>
                     <div class="line py-2"></div>
                     <b-col lg="12">
                         <form @submit.prevent="upload">
@@ -131,6 +138,12 @@
                                 </b-col>
                             </b-row>
                             </div>
+
+                            <!-- <div class="file-upload-wrapper">
+                                <input @change="uploadImg()" type="file" id="input-file-now-custom-2" class="file-upload"
+                                data-height="500" />
+                            </div> -->
+
                             <vue-dropzone ref="myVueDropzone" id="dropzone customdropzone" :options="dropzoneOptions"></vue-dropzone>
                             <b-col lg="12" class="my-3 p-0">
                                 <button class="btn btn-experience" type="submit">Tambah Portfolio</button>
@@ -149,7 +162,9 @@
         <b-row >
             <b-col lg="12" class="profile-company">
                 <b-row class="">
-                    <h1 class="px-2 py-3">Data Diri</h1>
+                    <b-col lg="12">
+                    <h1 class="px-2 py-3" style="border-bottom: 1px solid #C4C4C4; font-size:25px;">Data Diri</h1>
+                    </b-col>
                     <div class="line py-2"></div>
                     <b-col lg="12">
                         <form>

@@ -9,6 +9,7 @@ import Hire from '../views/Hire.vue'
 import Profile from '../views/Profile.vue'
 import Chat from '../views/Chat.vue'
 import ProfileRecrut from '../views/ProfileRecrut'
+import Company from '../views/Company.vue'
 
 import Home from '../views/Home.vue'
 
@@ -58,6 +59,11 @@ const routes = [
     path: '/profilerecrut',
     name: 'ProfileRecrut',
     component: ProfileRecrut
+  },
+  {
+    path: '/company',
+    name: 'Company',
+    component: Company
   },
   {
     path: '/portofolio',

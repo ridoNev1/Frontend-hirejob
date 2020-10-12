@@ -3,28 +3,52 @@
     <Navbar />
     <div class="portofolio-content">
       <div class="container pt-5 portofolio-box">
-        <UserCard />
-        <div class="portofolio-experience">
-          <div class="navbar-portofolio">
-            <p class="switch-nav switch-toggle" @click="switchToggle1">Portofolio</p>
-            <p class="switch-nav switch-toggle2" @click="switchToggle2">Pengalaman Kerja</p>
-          </div>
-          <div class="main-content">
-            <div class="portofolio" v-if="switchContent === 0">
-              <div class="portofolio-pict"><span></span></div>
-              <div class="portofolio-pict"><span></span></div>
-              <div class="portofolio-pict"><span></span></div>
+        <div class="profile-applicant">
+          <div class="profile-bg">
+            <div class="profile-picture">
+              <span></span>
             </div>
-            <div class="exprerience mt-4" v-else>
-              <div class="experience-list">
-                <div class="company-profile">
-                  <span></span>
+          </div>
+          <div class="portofolio-experience p-5">
+            <div class="user-applicant-data mt-4">
+              <h5 class="font-weight-bold">Louis Tomlinson</h5>
+              <p class="font-weight-bold">Web Developer</p>
+              <p class="text-secondary" style="margin-bottom: 0;"><img src="../assets/img/map-pin.png" alt="mappin"> Purwokerto, Jawa Tengah</p>
+              <p class="text-secondary pt-2">Freelancer</p>
+              <p class="bio-user">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni dignissimos rerum expedita? Quidem, iure non.</p>
+              <button class="btn hire-button">Hire</button>
+              <div class="mt-5">
+                <p class="font-weight-bold">Skill</p>
+                <div class="skill-list-box">
+                  <p class="skill-list" v-for="(item, index) in dataSkill" :key="index">{{item}}</p>
                 </div>
-                <div class="experiece-bio">
-                  <h4 class="font-weight-bold">Engginer</h4>
-                  <h6>Tokopedia</h6>
-                  <h6 class="text-secondary">July 2019 - January 2020 6 months</h6>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</p>
+              </div>
+              <p class="mt-5"><img src="../assets/img/mail.png" class="mr-3" alt="email"> Louistommo@gmail.com</p>
+              <p><img src="../assets/img/instagram.png" class="mr-3" alt="instagram"> @Louist91</p>
+              <p><img src="../assets/img/github.png" class="mr-3" alt="github"> @Louistommo</p>
+              <p><img src="../assets/img/gitlab.png" class="mr-3" alt="gitlab"> @luisfonsi</p>
+            </div>
+            <div class="navbar-portofolio mt-5">
+              <p class="switch-nav switch-toggle" @click="switchToggle1">Portofolio</p>
+              <p class="switch-nav switch-toggle2" @click="switchToggle2">Pengalaman Kerja</p>
+            </div>
+            <div class="main-content">
+              <div class="portofolio" v-if="switchContent === 0">
+                <div class="portofolio-pict"><span></span></div>
+                <div class="portofolio-pict"><span></span></div>
+                <div class="portofolio-pict"><span></span></div>
+              </div>
+              <div class="experience mt-4" v-else>
+                <div class="experience-list">
+                  <div class="company-profile">
+                    <span></span>
+                  </div>
+                  <div class="experiece-bio">
+                    <h4 class="font-weight-bold">Engginer</h4>
+                    <h6>Tokopedia</h6>
+                    <h6 class="text-secondary">July 2019 - January 2020 6 months</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -36,18 +60,18 @@
 </template>
 
 <script>
-import UserCard from '../components/UserCard'
 import Navbar from '../components/Navbar'
+
 export default {
   name: 'Portofolio',
   components: {
-    UserCard,
     Navbar
   },
   data () {
     return {
       switchToggle: 0,
-      switchContent: 0
+      switchContent: 0,
+      dataSkill: ['PHP', 'Phyton']
     }
   },
   methods: {
@@ -88,18 +112,58 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+/* profile-picture */
+.profile-picture {
+  width: 120px;
+  background-image: url(../assets/img/soda.jpeg);
+  background-size: cover;
+  height: 120px;
+  border-radius: 60px;
+  position: relative;
+  top: 50px;
+}
+.profile-bg {
+  background-color: #5E50A1;
+  border-radius: 8px 8px 0 0;
+  padding-left: 50px;
+  padding-top: 30px;
+}
+/* hire-button */
+.hire-button {
+  border: 2px solid #5E50A1;
+  background-color: #5E50A1;
+  color: white;
+  font-weight: bold;
+  padding: 7px 100px;
+}
+.hire-button:hover {
+  border: 2px solid #5E50A1;
+  background-color: #fff;
+  color: #5E50A1;
+}
+.skill-list {
+    padding: 5px 12px;
+    background: #FBB017 60%;
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 0;
+}
+.skill-list-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 120px));
+    justify-content: start;
+    gap: 15px;
+}
+
+.bio-user {
+  width: 60%;
+}
+/* portofolio-page */
 .portofolio-page {
   background-color: #F6F7F8;
   height: 200vh;
-}
-.portofolio-content {
-  background-color: #5E50A1;
-  height: 300px;
-}
-.portofolio-box {
-  display: grid;
-  grid-template-columns: 3.5fr 7fr;
 }
 
 .portofolio-experience {
@@ -138,6 +202,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(219px, 1fr));
   gap: 12px;
+  width: 80%;
 }
 
 .portofolio-pict {
@@ -159,5 +224,29 @@ export default {
   grid-template-columns: 1fr 4fr;
   border-bottom: 1px solid #E2E5ED;
   margin-bottom: 12px;
+}
+.experience {
+  width: 70%;
+}
+@media screen and (max-width: 576px) {
+  .portofolio-box {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+  .portofolio {
+    width: 100%;
+  }
+  .experience {
+    width: 100%;
+  }
+  .experience-list {
+    grid-template-columns: 2fr 4fr;
+  }
+  .navbar-portofolio {
+    width: 100%;
+  }
+  .bio-user {
+    width: 100%;
+  }
 }
 </style>

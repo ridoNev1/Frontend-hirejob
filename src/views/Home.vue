@@ -57,15 +57,20 @@
         </b-col>
         </div>
         </div>
+
+            <Footer />
+
     </div>
 </template>
 <script>
 import Navbar from '../components/Navbar'
 import CardHome from '../components/CardHome'
+import Footer from '../components/Footer'
 export default {
   components: {
     Navbar,
-    CardHome
+    CardHome,
+    Footer
   }
 }
 </script>
@@ -136,8 +141,8 @@ border-radius: 8px;
     padding-left: 40%;
 }
 @media only screen and (max-width: 600px) {
-  .pagination-component {
-    padding: 0;
-  }
+  .pagination-component{
+    padding-left: 20%;
+}
 }
 </style>
