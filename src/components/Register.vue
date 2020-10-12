@@ -19,7 +19,7 @@
               recusandae, sit quas architecto expedita repudiandae natus animi
               consequuntur libero neque.
             </p>
-            <b-form @submit.prevent="onRegisLamar()">
+            <b-form @submit.prevent="onRegisLamar">
               <b-form-text class="mt-5">Nama</b-form-text>
               <b-input
                 type="text"

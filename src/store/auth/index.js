@@ -1,5 +1,5 @@
 import axios from 'axios'
-// const { URL } = require('../../helper/env')
+import { url } from '../../helper/env'
 
 const state = () => {
   return {
@@ -31,7 +31,6 @@ const actions = {
           }
         })
         .catch((err) => {
-          // eslint-disable-next-line prefer-promise-reject-errors
           reject(err.data.message)
         })
     })
@@ -44,7 +43,7 @@ const actions = {
   },
   register (context, payload) {
     return new Promise((resolve, reject) => {
-      axios.post('http://localhost:3002/v1/user/register', {
+      axios.post(`${url}/v1/user/register`, {
         name: payload.nama,
         email: payload.email,
         handphone: payload.handphone,
@@ -58,7 +57,7 @@ const actions = {
           console.log(result)
         })
         .catch((err) => {
-          console.log(err)
+          console.log(err.message)
         })
     })
   }

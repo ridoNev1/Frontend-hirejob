@@ -46,7 +46,7 @@
                         </div>
                         <div class="input-group mb-3 mt-3">
                         <input type="text" class="form-control" placeholder="Input skill" v-model="userSkill">
-                        <button class="btn search-btn mx-3" @click="addSkill">Save</button>
+                        <button class="btn search-btn mx-3" @click="addSkill">Tambahkan</button>
                         </div>
                     </b-col>
                 </b-row>
@@ -138,13 +138,9 @@
                                 </b-col>
                             </b-row>
                             </div>
-
-                            <!-- <div class="file-upload-wrapper">
-                                <input @change="uploadImg()" type="file" id="input-file-now-custom-2" class="file-upload"
-                                data-height="500" />
-                            </div> -->
-
-                            <vue-dropzone ref="myVueDropzone" id="dropzone customdropzone" :options="dropzoneOptions"></vue-dropzone>
+                            <vue-dropzone ref="myVueDropzone" id="dropzone customdropzone" :options="dropzoneOptions" :useCustomSlot=true>
+                                <img src="../assets/img/dragndrop.png" alt="dragndrop">
+                            </vue-dropzone>
                             <b-col lg="12" class="my-3 p-0">
                                 <button class="btn btn-experience" type="submit">Tambah Portfolio</button>
                             </b-col>
@@ -219,9 +215,8 @@ export default {
       image: null,
       dropzoneOptions: {
         url: 'https://httpbin.org/post',
-        thumbnailWidth: 150,
-        maxFilesize: 0.5,
-        headers: { 'My-Awesome-Header': 'header value' }
+        thumbnailWidth: 200,
+        addRemoveLinks: true
       },
       dataSkill: [],
       userSkill: null,
@@ -360,4 +355,7 @@ border-radius: 8px;
     justify-content: start;
     gap: 15px;
 }
+
+/* dropzone */
+
 </style>
