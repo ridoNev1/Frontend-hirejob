@@ -19,15 +19,16 @@
             consequuntur libero neque.
           </p>
           <b-form @submit.prevent="onLoginPelamar()">
-            <b-form-text>Email</b-form-text>
+            <b-form-text class="mt-5">Email</b-form-text>
             <b-input
               type="text"
               placeholder="Masukan alamat email"
               autofocus
               v-model="form.email"
+              class="mb-5"
             ></b-input>
             <b-form-text>Kata Sandi</b-form-text>
-            <b-input type="password" v-model="form.password" placeholder="Masukan kata sandi"></b-input>
+            <b-input type="password" class="mb-5" v-model="form.password" placeholder="Masukan kata sandi"></b-input>
             <p class="mt-2" style="text-align: right">Lupa kata sandi?</p>
             <button class="btn">Masuk</button>
           </b-form>
@@ -60,15 +61,16 @@
             consequuntur libero neque.
           </p>
           <b-form @submit.prevent="onLoginPerekrut()">
-            <b-form-text>Email</b-form-text>
+            <b-form-text class="mt-5">Email</b-form-text>
             <b-input
               type="text"
               placeholder="Masukan alamat email"
               autofocus
               v-model="form.email"
+              class="mb-5"
             ></b-input>
             <b-form-text>Kata Sandi</b-form-text>
-            <b-input type="password" v-model="form.password" placeholder="Masukan kata sandi"></b-input>
+            <b-input type="password" v-model="form.password" class="mb-5" placeholder="Masukan kata sandi"></b-input>
             <p class="mt-2" style="text-align: right">Lupa kata sandi?</p>
             <button class="btn">Masuk</button>
           </b-form>

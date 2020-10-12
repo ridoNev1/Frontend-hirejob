@@ -15,6 +15,8 @@ import Home from '../views/Home.vue'
 
 import Portofolio from '../views/Portofolio.vue'
 
+import store from '../store/index'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -77,12 +79,28 @@ const routes = [
     path: '/chat',
     name: 'Chat',
     component: Chat
+    // ,
+    // meta: { requiresAuth: true }
   }
 ]
 
 const router = new VueRouter({
   routes,
   mode: 'history'
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) { // jika ada requiresAuth TRUE di setiap path
+    if (!store.getters['auth/isLogin']) { // masuk selanjutnya jika tidak ada getters di login
+      next({
+        name: 'Login'
+      })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

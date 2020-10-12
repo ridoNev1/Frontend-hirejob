@@ -8,8 +8,8 @@
     </div>
     <div class="user-data mt-3">
       <div class="user-name">
-        <h5 class="font-weight-bold" style="margin-bottom: 0;">DJ SODA</h5>
-        <p>DJ</p>
+        <h5 class="font-weight-bold" style="margin-bottom: 0;">JOKOWI</h5>
+        <p>Comedian</p>
       </div>
       <div>
         <p class="text-secondary" style="margin-bottom: 0;"><img src="../assets/img/map-pin.png" alt="mappin"> Purwokerto, Jawa Tengah</p>
@@ -38,7 +38,7 @@ export default {
 }
 .profile-image {
   width: 130px;
-  background-image: url(../assets/img/soda.jpeg);
+  background-image: url(../assets/img/jokowi.jpg);
   background-size: cover;
   height: 130px;
   border-radius: 70px;

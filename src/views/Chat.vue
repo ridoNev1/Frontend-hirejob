@@ -1,117 +1,51 @@
 <template>
-  <div>
+  <div class="chat-page">
     <Navbar />
-    <div class="chatCol">
-      <b-row style="background: #f6f7f8" class="no-gutters">
-        <b-col lg="4">
-          <div class="chatUser mt-3">
-            <h5 class="ml-3 pt-4 pb-2">Chat</h5>
-            <hr />
-            <div class="d-flex justify-content-left ml-3 mb-4 pt-3">
-              <div class="profile-image">
-                <img
-                  style="width: 70px; height: 70px; border-radius: 70px"
-                  src="../assets/img/soda.jpeg"
-                  alt=""
-                />
-                <span></span>
-              </div>
-              <div class="ml-5">
-                <h5>Soda</h5>
-                <p>Lagi pengen nih :(</p>
-              </div>
-            </div>
-            <div class="d-flex justify-content-left ml-3 mb-4 pt-3">
-              <div class="profile-image">
-                <img
-                  style="width: 70px; height: 70px; border-radius: 70px"
-                  src="../assets/img/pict3.jpg"
-                  alt=""
-                />
-                <span></span>
-              </div>
-              <div class="ml-5">
-                <h5>Eunbi</h5>
-                <p>Kangen</p>
-              </div>
-            </div>
-            <div class="d-flex justify-content-left ml-3 mb-4 pt-3">
-              <div class="profile-image">
-                <img
-                  style="width: 70px; height: 70px; border-radius: 70px"
-                  src="../assets/img/pict4.jpg"
-                  alt=""
-                />
-                <span></span>
-              </div>
-              <div class="ml-5">
-                <h5>Mia</h5>
-                <p>Dingin, temenin dong :(</p>
-              </div>
-            </div>
-            <div class="d-flex justify-content-left ml-3 mb-4 pt-3">
-              <div class="profile-image">
-                <img
-                  style="width: 70px; height: 70px; border-radius: 70px"
-                  src="../assets/img/pict1.jpeg"
-                  alt=""
-                />
-                <span></span>
-              </div>
-              <div class="ml-5">
-                <h5>Jokowi</h5>
-                <p>Nanti pilih saya lagi ya</p>
-              </div>
-            </div>
-            <div class="d-flex justify-content-left ml-3 mb-4 pt-3">
-              <div class="profile-image">
-                <img
-                  style="width: 70px; height: 70px; border-radius: 70px"
-                  src="../assets/img/pict5.jpeg"
-                  alt=""
-                />
-                <span></span>
-              </div>
-              <div class="ml-5">
-                <h5>Tante Okita</h5>
-                <p>Temenin tante yuk</p>
-              </div>
-            </div>
+    <div class="chat-content container mt-5">
+      <div class="chatCol">
+        <div class="chat-list">
+          <div class="chat-nav">
+            <p class="font-weight-bold m-0">Chat</p>
           </div>
-        </b-col>
-        <b-col lg="8" class="mt-3">
-          <div class="card cardStyle">
-            <div class="ml-3 chatImgUser">
-              <img style="width: 50px; height: 50px; border-radius: 70px; margin-top: 10px;" src="../assets/img/soda.jpeg" alt="Card image cap" />
-              <h5 class="ml-3" style="margin-top: 20px">Soda</h5>
-            </div>
-            <hr style="margin-top: 10px;">
-            <div class="card-body Message">
-              <p>Lagi pengen nih :(</p>
+        </div>
+        <div class="friend-list">
+          <div class="empty-friendlist">
+            <img src="../assets/img/emptymessage.png" alt="emptymessage" class="mt-5">
+          </div>
+        </div>
+      </div>
+      <div class="message-list bg-white">
+        <div class="chat-nav">
+          <div class="profile-pict">
+            <span></span>
+          </div>
+          <p class="font-weight-bold m-0">Chat</p>
+        </div>
+        <div class="chat-box p-4">
+          <div class="template-message">
+            <p>We hire you</p>
+            <div class="company-header" style="display: flex;">
+              <div class="img-recrutter">
+                <span></span>
+              </div>
+              <p class="font-weight-bold mt-2">Tokopedia</p>
             </div>
             <div>
-              <form @submit.prevent="sendMessage()">
-                <div class="input-group mb-3 pl-3 pr-3">
-                  <input
-                    placeholder="Type message..."
-                    type="text"
-                    class="inputMessage">
-                  <div class="input-group-append">
-                    <img @click="sendMessage()" class="ml-3" src="../assets/img/sendIcon.png">
-                    <!-- <button
-                      class="btn btn-outline-secondary ml-3"
-                      type="button"
-                      id="button-addon2"
-                      @click="sendMessage()"
-                    >
-                    </button> -->
-                  </div>
-                </div>
-              </form>
+              <p class="mt-2">Subject: <span class="font-weight-bold">Proyek</span></p>
+              <p class="m-0"><img src="../assets/img/mail.png" alt="mail"> hrdhr@gmail.com</p>
+              <p class="mt-1"><b-icon icon="telephone-plus" scale="1.2" class="ml-1 mr-1"></b-icon> 023134493113</p>
+              <p>Saya sangat tertarik untuk mengundang anda untuk bergabung. Apabila anda tertarik,
+              silahkan balas pesan ini. <br>
+              Salam hangat <span class="font-weight-bold">Tokopedia</span>
+              </p>
+              <button class="btn text-white" style="background: #5E50A1;">Lihat Profile Perekrut</button>
             </div>
           </div>
-        </b-col>
-      </b-row>
+          <div class="receiver-chat">
+            <p></p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -126,41 +60,55 @@ export default {
 </script>
 
 <style scoped>
-.Message {
-  min-height: 66vh;
+.chat-page {
+  background-color: #F6F7F8;
+  padding-bottom: 40px;
 }
-.inputMessage{
-      width: 93%;
-      margin-left: 3px;
-      border:solid 1px #ccc;
-      border-radius: 30px;
-    }
-.cardStyle{
-  margin-left: 30px;
-  width: 56rem;
+.chatCol {
+  background-color: #fff;
 }
-.card {
-  border: none;
-}
-.chatImgUser {
+.chat-nav {
+  border-bottom: 1px solid rgb(226, 226, 226);
   display: flex;
-  justify-content: left;
+  align-items: center;
+  padding: 18px;
 }
-.chatting {
-  background: #ffffff;
-  margin-left: 20px;
-  margin-right: 10%;
-  border-color: #f6f7f8;
+.empty-friendlist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.chatUser {
-  margin-left: 15%;
-  background: #ffffff;
+.chat-content {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  gap: 20px;
 }
-.profile-image {
-  width: 70px;
-  /* background-image: url(../assets/img/soda.jpeg); */
+
+/* profile-pict */
+.profile-pict {
+  width: 40px;
+  height: 40px;
+  background-image: url(../assets/img/soda.jpeg);
   background-size: cover;
-  height: 70px;
-  border-radius: 70px;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+/* img-recrutter */
+.img-recrutter {
+  width: 50px;
+  height: 50px;
+  background-image: url(../assets/img/tokped.png);
+  background-size: cover;
+  border-radius: 25px;
+  margin-right: 10px;
+}
+.template-message {
+  box-shadow: 1px 1px 2px 1px rgb(226, 226, 226);
+  padding: 10px;
+}
+
+.chat-box {
+  height: 100vh;
 }
 </style>
