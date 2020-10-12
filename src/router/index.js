@@ -2,10 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Landing from '../views/Landing.vue'
 import Login from '../views/Login.vue'
+import LoginRekrut from '../views/LoginRekrut.vue'
 import Register from '../views/Register.vue'
+import RegisRekrut from '../views/RegisterRekrut.vue'
 import Hire from '../views/Hire.vue'
 import Profile from '../views/Profile.vue'
 import Chat from '../views/Chat.vue'
+import ProfileRecrut from '../views/ProfileRecrut'
+import Company from '../views/Company.vue'
 
 import Home from '../views/Home.vue'
 
@@ -30,14 +34,34 @@ const routes = [
     component: Login
   },
   {
+    path: '/loginrekrut',
+    name: 'LoginRekrut',
+    component: LoginRekrut
+  },
+  {
     path: '/register',
     name: 'Register',
     component: Register
   },
   {
+    path: '/regisrekrut',
+    name: 'RegisRekrut',
+    component: RegisRekrut
+  },
+  {
     path: '/profile',
     name: 'Profile',
     component: Profile
+  },
+  {
+    path: '/profilerecrut',
+    name: 'ProfileRecrut',
+    component: ProfileRecrut
+  },
+  {
+    path: '/company',
+    name: 'Company',
+    component: Company
   },
   {
     path: '/portofolio',

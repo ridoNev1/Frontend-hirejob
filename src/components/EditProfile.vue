@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="this.role === 0">
+        <div v-if="type === 'profile'">
         <!-- form pencari kerja -->
         <b-row class="users">
             <b-col lg="12" class="profile-user">
@@ -12,15 +12,15 @@
                         <form>
                             <div class="form-group">
                                 <label>Nama Lengkap</label>
-                                <input type="text" class="form-control" placeholder="Masukan nama lengkap">
+                                <input type="text" class="form-control" placeholder="Masukan nama lengkap" v-model="fullnameApplicant">
                             </div>
                             <div class="form-group">
                                 <label>Jobdesk</label>
-                                 <input type="text" class="form-control" placeholder="Masukan Jobdesk">
+                                 <input type="text" class="form-control" placeholder="Masukan Jobdesk" v-model="jobdescApplicant">
                             </div>
                             <div class="form-group">
                                 <label>Domisili</label>
-                                 <input type="text" class="form-control" placeholder="Masukan Domisili">
+                                 <input type="text" class="form-control" placeholder="Masukan Domisili" v-model="domApplicant">
                             </div>
                             <div class="form-group">
                                 <label>Tempat Kerja</label>
@@ -28,7 +28,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Deskripsi singkat</label>
-                                <textarea class="form-control" rows="5" placeholder="Tuliskan deskripsi singkat"></textarea>
+                                <textarea class="form-control" rows="5" placeholder="Tuliskan deskripsi singkat" v-model="bioApplicant"></textarea>
                             </div>
                         </form>
                     </b-col>
@@ -41,9 +41,12 @@
                     <h1 class="px-2 py-3" style="border-bottom: 1px solid #C4C4C4; font-size:25px;">Skill</h1>
                     </b-col>
                     <b-col lg="12">
-                        <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Golang">
-                        <button class="btn search-btn mx-3">Search</button>
+                        <div class="skill-list-box">
+                            <p class="skill-list" v-for="(item, index) in dataSkill" :key="index">{{item}}</p>
+                        </div>
+                        <div class="input-group mb-3 mt-3">
+                        <input type="text" class="form-control" placeholder="Input skill" v-model="userSkill">
+                        <button class="btn search-btn mx-3" @click="addSkill">Save</button>
                         </div>
                     </b-col>
                 </b-row>
@@ -101,7 +104,7 @@
                     </b-col>
                     <div class="line py-2"></div>
                     <b-col lg="12">
-                        <form>
+                        <form @submit.prevent="upload">
                             <div class="form-group">
                                 <label>Nama Aplikasi</label>
                                 <input type="text" class="form-control" placeholder="Masukkan nama aplikasi">
@@ -116,7 +119,7 @@
                                 <b-col lg="6" sm="6" cols="6" class="radio">
                                     <div class="radio-box text-left  py-2">
                                         <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" @click="typePortfolio('Aplikasi Web')">
                                         <label class="form-check-label" for="exampleRadios1">
                                             Aplikasi Web
                                         </label>
@@ -126,8 +129,8 @@
                                 <b-col lg="6" sm="6" cols="6" class="radio">
                                     <div class="radio-box text-left  py-2">
                                         <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                        <label class="form-check-label" for="exampleRadios1">
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option1" @click="typePortfolio('Aplikasi Mobile')">
+                                        <label class="form-check-label" for="exampleRadios2">
                                             Aplikasi Mobile
                                         </label>
                                         </div>
@@ -135,14 +138,17 @@
                                 </b-col>
                             </b-row>
                             </div>
-                            <div class="file-upload-wrapper">
+
+                            <!-- <div class="file-upload-wrapper">
                                 <input @change="uploadImg()" type="file" id="input-file-now-custom-2" class="file-upload"
                                 data-height="500" />
-                            </div>
+                            </div> -->
+
+                            <vue-dropzone ref="myVueDropzone" id="dropzone customdropzone" :options="dropzoneOptions"></vue-dropzone>
+                            <b-col lg="12" class="my-3 p-0">
+                                <button class="btn btn-experience" type="submit">Tambah Portfolio</button>
+                            </b-col>
                         </form>
-                    </b-col>
-                    <b-col lg="12" class="my-3">
-                        <button class="btn btn-experience">Tambah Portfolio</button>
                     </b-col>
                 </b-row>
             </b-col>
@@ -203,18 +209,43 @@
     </div>
 </template>
 <script>
-export default {
+import vue2Dropzone from 'vue2-dropzone'
+import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 
+export default {
+  props: ['type'],
   data () {
     return {
-      role: 0
-      // 1 = company & 0 =users
-
+      image: null,
+      dropzoneOptions: {
+        url: 'https://httpbin.org/post',
+        thumbnailWidth: 150,
+        maxFilesize: 0.5,
+        headers: { 'My-Awesome-Header': 'header value' }
+      },
+      dataSkill: [],
+      userSkill: null,
+      fullnameApplicant: null,
+      jobdescApplicant: null,
+      domApplicant: null,
+      bioApplicant: null,
+      portfolioType: null
     }
   },
+  components: {
+    vueDropzone: vue2Dropzone
+  },
   methods: {
-    uploadImg  () {
-    //   $('.file-upload').file_upload()
+    upload () {
+      const dataImage = this.$refs.myVueDropzone.getAcceptedFiles()
+      console.log(dataImage)
+    },
+    addSkill () {
+      this.dataSkill.push(this.userSkill)
+      this.userSkill = null
+    },
+    typePortfolio (value) {
+      this.portfolioType = value
     }
   }
 }
@@ -312,5 +343,21 @@ border-radius: 8px;
     background: #FFFFFF;
 border-radius: 8px;
 }
+}
+
+/* skill-list */
+.skill-list {
+    padding: 5px 12px;
+    background-color: #FBB017;
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 0;
+}
+.skill-list-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 120px));
+    justify-content: start;
+    gap: 15px;
 }
 </style>
