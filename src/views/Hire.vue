@@ -9,17 +9,28 @@
       </b-col>
       <b-col lg="7" class="mt-3 formSize">
         <div class="divHire">
-        <h2 style="font-weight: bold">Hubungi DJ SODA</h2>
+        <h2 style="font-weight: bold">Hubungi Jokowi</h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-          recusandae quo qui at neque repellat, nemo quisquam ratione dolorem
-          laudantium! Dignissimos, libero ea facilis iure maiores accusantium
-          expedita vel consectetur?
+          Plih saya lagi yuk
         </p>
 
         <b-form @submit.prevent="onHire()">
             <b-form-text>Tujuan tentang posisi ini</b-form-text>
-            <b-form-select class="mb-4" v-model="selected" :options="options"></b-form-select>
+
+<div>
+    <b-form-select v-model="selected" :options="options" class="mb-3">
+      <!-- This slot appears above the options from 'options' prop -->
+      <template v-slot:first>
+        <b-form-select-option :value="null" disabled>-- Please select an option --</b-form-select-option>
+      </template>
+
+      <!-- These options will appear after the ones from 'options' prop -->
+      <b-form-select-option value="C">Option C</b-form-select-option>
+      <b-form-select-option value="D">Option D</b-form-select-option>
+    </b-form-select>
+
+  </div>
+
             <b-form-text>Nama Lengkap</b-form-text>
             <b-input
               type="text"
@@ -103,5 +114,75 @@ button:hover {
   width: 150px;
   height: 150px;
   margin-left: 90px;
+}
+@media screen and (max-width: 365px){
+  .Tets{
+    background: olivedrab;
+    width: 20%;
+  }
+  .divHire {
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
 }
 </style>

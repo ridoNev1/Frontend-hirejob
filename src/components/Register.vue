@@ -20,44 +20,48 @@
               consequuntur libero neque.
             </p>
             <b-form @submit.prevent="onRegisLamar()">
-              <b-form-text>Nama</b-form-text>
+              <b-form-text class="mt-5">Nama</b-form-text>
               <b-input
                 type="text"
                 placeholder="Masukan nama panjang"
                 autofocus
+                class="mb-4"
                 v-model="form.nama"
               ></b-input>
               <b-form-text>Email</b-form-text>
               <b-input
                 type="email"
                 placeholder="Masukan alamat email"
+                class="mb-4"
                 v-model="form.email"
               ></b-input>
               <b-form-text>No Handphone</b-form-text>
               <b-input
                 type="number"
                 placeholder="Masukan no handphone"
+                class="mb-4"
                 v-model="form.handphone"
               ></b-input>
               <b-form-text>Kata Sandi</b-form-text>
               <b-input
                 type="password"
                 placeholder="Masukan kata sandi"
+                class="mb-4"
                 v-model="form.password"
               ></b-input>
               <b-form-text>Konfirmasi Kata Sandi</b-form-text>
               <b-input
                 type="password"
                 placeholder="Masukan konfirmasi kata sandi"
+                class="mb-4"
                 v-model="form.password2"
               ></b-input>
-              <p class="mt-2" style="text-align: right">Lupa kata sandi?</p>
               <button class="btn">Daftar</button>
             </b-form>
             <p class="mt-3" style="text-align: center">
               Anda sudah punya akun?
               <router-link to="/login" style="color: #fbb017">
-                Daftar disini
+                Masuk disini
               </router-link>
             </p>
           </div>
@@ -84,17 +88,19 @@
               consequuntur libero neque.
             </p>
             <b-form @submit.prevent="onRegisRekrut()">
-              <b-form-text>Nama</b-form-text>
+              <b-form-text class="mt-5">Nama</b-form-text>
               <b-input
                 type="text"
                 placeholder="Masukan nama panjang"
                 autofocus
+                class="mb-4"
                 v-model="form.nama"
               ></b-input>
               <b-form-text>Email</b-form-text>
               <b-input
                 type="email"
                 placeholder="Masukan alamat email"
+                class="mb-4"
                 v-model="form.email"
               ></b-input>
               <b-form-text>Perusahaan</b-form-text>
@@ -102,6 +108,7 @@
                 type="text"
                 placeholder="Masukan nama perusahaan"
                 autofocus
+                class="mb-4"
                 v-model="form.company"
               ></b-input>
               <b-form-text>Jabatan</b-form-text>
@@ -109,33 +116,36 @@
                 type="text"
                 placeholder="Posisi di perusahaan Anda"
                 autofocus
+                class="mb-4"
                 v-model="form.position"
               ></b-input>
               <b-form-text>No Handphone</b-form-text>
               <b-input
                 type="number"
                 placeholder="Masukan no handphone"
+                class="mb-4"
                 v-model="form.handphone"
               ></b-input>
               <b-form-text>Kata Sandi</b-form-text>
               <b-input
                 type="password"
                 placeholder="Masukan kata sandi"
+                class="mb-4"
                 v-model="form.password"
               ></b-input>
               <b-form-text>Konfirmasi Kata Sandi</b-form-text>
               <b-input
                 type="password"
                 placeholder="Masukan konfirmasi kata sandi"
+                class="mb-4"
                 v-model="form.password2"
               ></b-input>
-              <p class="mt-2" style="text-align: right">Lupa kata sandi?</p>
               <button class="btn">Daftar</button>
             </b-form>
             <p class="mt-3" style="text-align: center">
               Anda sudah punya akun?
               <router-link to="/login" style="color: #fbb017">
-                Daftar disini
+                Masuk disini
               </router-link>
             </p>
           </div>
@@ -146,27 +156,35 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   data () {
     return {
       form: {
+        role: 0,
         nama: '',
         email: '',
         handphone: '',
         company: '',
         position: '',
         password: '',
-        password2: this.password
+        password2: ''
       }
     }
   },
   methods: {
     onRegisLamar () {
-      console.log(this.form.nama)
-      console.log(this.form.email)
-      console.log(this.form.handphone)
-      console.log(this.form.password)
-      console.log(this.form.password2)
+      if (this.form.password2 !== this.form.password) {
+        this.$swal('Password doesn\'t match')
+      } else {
+        this.onSignUp(this.form)
+          .then((result) => {
+            console.log(result)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
     },
     onRegisRekrut () {
       console.log(this.form.nama)
@@ -176,7 +194,8 @@ export default {
       console.log(this.form.password2)
       console.log(this.form.position)
       console.log(this.form.company)
-    }
+    },
+    ...mapActions({ onSignUp: 'auth/register' })
   },
   props: ['type']
 }
