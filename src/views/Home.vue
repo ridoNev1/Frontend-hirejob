@@ -2,7 +2,7 @@
 <div>
     <Navbar />
      <b-col lg="12" class="top-jobs px-5 py-1">
-                    <h1 class="text-white mx-4 px-5">Top Jobs</h1>
+                    <h1 class="text-white px-5">Top Jobs</h1>
                 </b-col>
     <div class="container-fluid">
         <div>
@@ -13,7 +13,7 @@
                         <form class="form">
                             <input type="text" placeholder="Search any skill">
                             <div style="margin-top: -2px;">
-                                <b-dropdown  id="dropdown-left" text="Category" variant="transparent" class="m-2">
+                                <b-dropdown  id="dropdown-left" text="Category" variant="transparent" class="category m-2">
                                     <b-dropdown-item href="#">Action</b-dropdown-item>
                                     <b-dropdown-item href="#">Another action</b-dropdown-item>
                                     <b-dropdown-item href="#">Something else here</b-dropdown-item>
@@ -25,19 +25,10 @@
                 </b-col>
                 <b-col lg="12" class="my-3 mb-4">
                     <b-row class="card-body">
-                        <b-col lg="3" sm="6" cols="6">
+                        <b-col lg="3" sm="6" cols="12">
                             <CardHome />
                         </b-col>
-                        <b-col lg="3" sm="6" cols="6">
-                            <CardHome />
-                        </b-col>
-                        <b-col lg="3" sm="6" cols="6">
-                            <CardHome />
-                        </b-col>
-                        <b-col lg="3" sm="6" cols="6">
-                            <CardHome />
-                        </b-col>
-                        <b-col lg="3" sm="6" cols="6">
+                        <b-col lg="3" sm="6" cols="12">
                             <CardHome />
                         </b-col>
                     </b-row>
@@ -140,9 +131,28 @@ border-radius: 8px;
 .pagination-component{
     padding-left: 40%;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 400px) {
   .pagination-component{
-    padding-left: 20%;
+    padding-left: 10%;
+    }
+    .input-group{
+    padding: 0;
 }
+.search input[type="text"]{
+    outline: none;
+    border: none;
+    border-right: 1px solid #9EA0A5;
+    padding: 0 -0px;
+    width: 100%;
+}
+    .category{
+        width: 50%;
+    }
+.card-body{
+    padding: 0 5px ;
+}
+    .searchButton{
+       width: 90%;
+    }
 }
 </style>

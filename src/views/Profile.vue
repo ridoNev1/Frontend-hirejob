@@ -2,15 +2,15 @@
     <div>
         <Navbar />
             <div class="container-fluid">
-            <b-col lg="12" class="profile py-5">
+            <b-col lg="12" class="profile ">
                     <b-row class="content">
-                    <b-col lg="4" cols="12" class="user-card text-center">
+                    <b-col lg="4" cols="12" class="user-card-profile">
                         <UserCard />
                         <b-row class="text-left">
                           <b-col lg="12" class="my-3">
                             <button class="btn btn-save">Simpan</button>
                           </b-col>
-                          <b-col lg="12" class="my-3">
+                          <b-col lg="12" class="">
                            <button class="btn btn-cancel">Batal</button>
                           </b-col>
                         </b-row>
@@ -47,6 +47,9 @@ export default {
 }
 </script>
 <style scoped>
+.profile{
+  padding-top: 50px;
+}
     .container-fluid{
         background: #F6F7F8;
     }
@@ -61,8 +64,7 @@ export default {
         background: #5E50A1;
         height: 200px;
     }
-    .user-card{
-        height: 600px;
+    .user-card-profile{
         padding-left: 5%;
     }
     .btn-save{
@@ -98,19 +100,23 @@ border: 1px solid #5E50A1;
     } */
     @media only screen and (max-width: 600px) {
   .edit-profile {
-    margin-top: 150px;
+    margin-top: 100px;
   }
-  .user-card{
-        padding-left: 15%;
+  .user-card-profile{
+        padding: 0;
     }
   .btn-cancel{
-      width: 90%;
+      width: 100%;
     }
      .edit-profile{
+       padding-left: 0;
       padding-right: 0;
     }
     .btn-save{
-      width: 90%;
+      width: 100%;
     }
+    /* .profile{
+      padding: 5 !important;
+    } */
 }
 </style>

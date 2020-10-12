@@ -2,21 +2,21 @@
     <div>
         <Navbar />
             <div class="container-fluid">
-            <b-col lg="12" class="profile py-5">
+            <b-col lg="12" class="profile ">
                     <b-row class="content">
-                    <b-col lg="4" cols="12" class="user-card text-center">
+                    <b-col lg="4" cols="12" class="user-card-profile">
                         <UserCard />
                         <b-row class="text-left">
                           <b-col lg="12" class="my-3">
                             <button class="btn btn-save">Simpan</button>
                           </b-col>
-                          <b-col lg="12" class="my-3">
+                          <b-col lg="12" class="">
                            <button class="btn btn-cancel">Batal</button>
                           </b-col>
                         </b-row>
 
                     </b-col>
-                    <b-col class="edit-profile" lg="8" cols="12">
+                    <b-col class="edit-profile mb-5" lg="8" cols="12">
                         <EditProfile type="profilerecrut"/>
                     </b-col>
                 </b-row>
@@ -47,6 +47,9 @@ export default {
 }
 </script>
 <style scoped>
+.profile{
+  padding-top: 50px;
+}
     .container-fluid{
         background: #F6F7F8;
     }
@@ -61,18 +64,17 @@ export default {
         background: #5E50A1;
         height: 200px;
     }
-    .user-card{
-        height: 600px;
-        padding-left: 5%;
+    .user-card-profile{
+        padding-left: 50px;
     }
     .btn-save{
-      width: 90%;
+      width: 80%;
       color: white;
       background: #5E50A1;
 border-radius: 4px;
     }
     .edit-profile{
-      padding-right: 8%;
+      padding-right: 50px;
     }
     .btn-save:hover{
       color: #5E50A1;
@@ -81,7 +83,7 @@ border-radius: 4px;
 border: 1px solid #5E50A1;
     }
     .btn-cancel{
-      width: 90%;
+      width: 80%;
       border: 1px solid #5E50A1;
       box-sizing: border-box;
       border-radius: 4px;
@@ -96,21 +98,22 @@ border: 1px solid #5E50A1;
         padding: 0px 5px;
         margin-top: 5px;
     } */
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 576px) {
   .edit-profile {
-    margin-top: 150px;
+    margin-top: 100px;
+    padding: 10px;
   }
-  .user-card{
-        padding-left: 15%;
+  .user-card-profile{
+        padding: 0px;
     }
   .btn-cancel{
-      width: 90%;
-    }
-     .edit-profile{
-      padding-right: 0;
+      width: 100%;
     }
     .btn-save{
-      width: 90%;
+      width: 100%;
     }
+    /* .profile{
+      padding: 5 !important;
+    } */
 }
 </style>

@@ -2,10 +2,10 @@
 <div>
     <Navbar />
     <div class="content">
-        <div class="container-fluid my-5">
+        <div class="container-fluid ">
         <b-col lg="12" class="company ">
           <b-row class="profile-company text-center">
-                <div class="profile-bg my-5">
+                <div class="profile-bg mb-5 ">
                     <div class="profile-picture">
                     <span></span>
                     </div>
@@ -80,6 +80,7 @@ export default {
 <style scoped>
     .container-fluid{
         background: #F6F7F8;
+        padding: 100px 200px;
     }
     .profile-picture {
   width: 120px;
@@ -89,7 +90,7 @@ export default {
   border-radius: 60px;
   position: relative;
   top: 50px;
-  margin-left: 43%;
+  margin-left: 40%;
 }
 .profile-bg {
   background-color: #5E50A1;
@@ -105,7 +106,7 @@ export default {
     .profile-company{
         background: #FFFFFF;
         border-radius: 8px;
-        margin: 40px;
+        /* margin: 30px 40px; */
     }
     .img-card{
   width: 130px;
@@ -139,12 +140,23 @@ border-radius: 4px;
   border-radius: 60px;
   position: relative;
   top: 50px;
-  margin-left: 27%;
+  margin-left: 20%;
 }
 .profile-company{
         background: #FFFFFF;
-        border-radius: 8px;
+        border-radius: 0px;
         margin: 0px;
+        padding: 0px;
+    }
+    .profile-bg {
+  background-color: #5E50A1;
+  border-radius: 0px;
+}
+    .company{
+        padding: 0px;
+    }
+    .container-fluid{
+        padding: 0px;
     }
 }
 </style>

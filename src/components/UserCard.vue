@@ -46,4 +46,12 @@ export default {
 .user-data {
   width: 100%;
 }
+@media screen and (max-width: 576px){
+  .user-card{
+    width: 100%;
+  }
+  .profile-image{
+    margin-top: -50px;
+  }
+}
 </style>

@@ -339,7 +339,7 @@ border-radius: 8px;
     padding: 1px;
   }
   .profile-company{
-    padding: 6px;
+    padding: 0px;
     background: #FFFFFF;
 border-radius: 8px;
 }
