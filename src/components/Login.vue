@@ -1,11 +1,11 @@
 <template>
-<div>
+<div style="height: 100vh;">
   <div class="cont" v-if="type === 'pelamar'">
     <b-row class="no-gutters">
       <b-col lg="6">
         <img class="logo" src="../assets/img/exam.svg" alt="" />
         <div class="divImage">
-          <img src="../assets/img/exmaple.jpg" alt="" />
+          <img src="../assets/img/banner.svg" alt="" />
         </div>
       </b-col>
       <b-col lg="6">
@@ -25,10 +25,10 @@
               placeholder="Masukan alamat email"
               autofocus
               v-model="form.email"
-              class="mb-5"
+              class="mb-4"
             ></b-input>
             <b-form-text>Kata Sandi</b-form-text>
-            <b-input type="password" class="mb-5" v-model="form.password" placeholder="Masukan kata sandi"></b-input>
+            <b-input type="password" class="mb-4" v-model="form.password" placeholder="Masukan kata sandi"></b-input>
             <p class="mt-2" style="text-align: right">Lupa kata sandi?</p>
             <button class="btn">Masuk</button>
           </b-form>
@@ -67,10 +67,10 @@
               placeholder="Masukan alamat email"
               autofocus
               v-model="form.email"
-              class="mb-5"
+              class="mb-4"
             ></b-input>
             <b-form-text>Kata Sandi</b-form-text>
-            <b-input type="password" v-model="form.password" class="mb-5" placeholder="Masukan kata sandi"></b-input>
+            <b-input type="password" v-model="form.password" class="mb-4" placeholder="Masukan kata sandi"></b-input>
             <p class="mt-2" style="text-align: right">Lupa kata sandi?</p>
             <button class="btn">Masuk</button>
           </b-form>
@@ -88,6 +88,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   data () {
     return {
@@ -99,13 +100,30 @@ export default {
   },
   methods: {
     onLoginPelamar () {
-      console.log(this.form.email)
-      console.log(this.form.password)
+      this.actionLogin(this.form)
+        .then((result) => {
+          if (result === 'Email invalid') {
+            this.$swal('Email doesn\'t exist!')
+            localStorage.removeItem('token')
+          } else if (result === 'Password invalid') {
+            this.$swal('Wrong Password!')
+            localStorage.removeItem('token')
+          } else if (result === 'Please check your email to activation') {
+            this.$swal('Check your email activation!!')
+            localStorage.removeItem('token')
+          } else {
+            this.$router.push('/')
+          }
+        })
+        .catch((err) => {
+          alert(err)
+        })
     },
     onLoginPerekrut () {
       console.log(this.form.email)
       console.log(this.form.password)
-    }
+    },
+    ...mapActions({ actionLogin: 'auth/login' })
   },
   props: ['type']
 }
@@ -132,9 +150,10 @@ button:hover {
   margin: 50px 20px;
 }
 .cont {
-  margin: 30px 60px !important;
+  padding: 30px 60px !important;
 }
 .divImage img {
+  opacity: 0.5;
   width: 73%;
 }
 .textLogin {

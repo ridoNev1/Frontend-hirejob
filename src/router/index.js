@@ -28,7 +28,8 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: { requiresAuth: true }
   },
   {
     path: '/login',
@@ -53,34 +54,38 @@ const routes = [
   {
     path: '/profile',
     name: 'Profile',
-    component: Profile
+    component: Profile,
+    meta: { requiresAuth: true }
   },
   {
     path: '/profilerecrut',
     name: 'ProfileRecrut',
-    component: ProfileRecrut
+    component: ProfileRecrut,
+    meta: { requiresAuth: true }
   },
   {
     path: '/company',
     name: 'Company',
-    component: Company
+    component: Company,
+    meta: { requiresAuth: true }
   },
   {
     path: '/portofolio',
     name: 'Portofolio',
-    component: Portofolio
+    component: Portofolio,
+    meta: { requiresAuth: true }
   },
   {
     path: '/hire',
     name: 'Hire',
-    component: Hire
+    component: Hire,
+    meta: { requiresAuth: true }
   },
   {
     path: '/chat',
     name: 'Chat',
-    component: Chat
-    // ,
-    // meta: { requiresAuth: true }
+    component: Chat,
+    meta: { requiresAuth: true }
   }
 ]
 

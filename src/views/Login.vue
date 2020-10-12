@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background: #f6f7f8">
     <Login type="pelamar"/>
   </div>
 </template>

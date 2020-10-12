@@ -19,19 +19,14 @@ const getters = {
 const actions = {
   login (context, payload) {
     return new Promise((resolve, reject) => {
-      axios.post('http://localhost:3002/v1/user/login', payload)
+      axios.post(`${url}/v1/user/login`, payload)
         .then((result) => {
+          resolve(result.data.message)
           localStorage.setItem('token', result.data.data.token)
-          if (result.data.data.token === undefined || result.data.data.token === null) {
-            alert('Email or password not available. Please Sign Up first')
-            localStorage.removeItem('token')
-            window.location = '/'
-          } else {
-            resolve(result.data.message)
-          }
+          localStorage.setItem('datauser', JSON.stringify(result.data.data))
         })
         .catch((err) => {
-          reject(err.data.message)
+          console.log(err.message)
         })
     })
   },
