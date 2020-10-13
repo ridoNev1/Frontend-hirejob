@@ -6,7 +6,8 @@ const state = () => {
     token: localStorage.getItem('token') || null,
     detailUser: [],
     dataPorfolio: [],
-    allUser: []
+    allUser: [],
+    getExperience: []
   }
 }
 const getters = {
@@ -33,6 +34,9 @@ const getters = {
     const skill2 = skill1.split(',')
     data1.skill = skill2
     return data1
+  },
+  getExperience (state) {
+    return state.getExperience
   }
 }
 
@@ -109,13 +113,14 @@ const actions = {
       })
     })
   },
+
   updateProfileTalent (context, payload) {
     return new Promise((resolve, reject) => {
       const skill = payload.dataSkill
       let skill2 = null
       if (skill[0] === '...') {
-        skill.slice(1)
-        skill2 = skill
+        const data = skill.slice(1)
+        skill2 = data
       } else {
         skill2 = skill
       }
@@ -169,9 +174,32 @@ const actions = {
         console.log(err)
       })
     })
+  },
+  getExperience (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios.get(`${url}/v1/experience/getexperience/${payload}`).then((result) => {
+        console.log(result)
+      }).catch((err) => {
+        console.log(err)
+      })
+    })
+  },
+  insertExperience (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios.post(`${url}/v1/experience/insert`, {
+        position: payload.positionExperience,
+        time_exp: payload.yearsExperience,
+        description_exp: payload.descriptionExperience,
+        id_users: payload.id,
+        id_company_exp: payload.companyExperience
+      }).then((result) => {
+        console.log(result)
+      }).catch((err) => {
+        console.log(err)
+      })
+    })
   }
 }
-
 export default {
   namespaced: true,
   state,
