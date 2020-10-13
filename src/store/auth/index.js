@@ -78,10 +78,7 @@ const actions = {
         role: payload.role
       })
         .then((result) => {
-        //   alert('Success Sign Up, please Log In')
-        //   resolve(result.data.message)
-        //   window.location = '/'
-          console.log(result)
+          resolve(result.data.message)
         })
         .catch((err) => {
           console.log(err.message)
@@ -154,7 +151,8 @@ const actions = {
         email: payload
       })
         .then(result => {
-          console.log(result)
+          resolve(result.data.message)
+          console.log(result.data.message)
         })
         .catch(err => {
           console.log(err)

@@ -33,7 +33,7 @@
               <b-input
                 type="password"
                 class="mb-4"
-                v-model="form.password"
+                v-model="form.password2"
                 placeholder="Masukan konfirmasi kata sandi"
               ></b-input>
               <button class="btn">Reset Password</button>
@@ -51,7 +51,8 @@ export default {
   data () {
     return {
       form: {
-        password: ''
+        password: '',
+        password2: ''
       }
     }
   },

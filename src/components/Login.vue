@@ -121,7 +121,7 @@
             </b-form>
             <p class="mt-3" style="text-align: center">
               Anda belum punya akun?
-              <router-link to="/register" style="color: #fbb017">
+              <router-link to="/regisrekrut" style="color: #fbb017">
                 Daftar disini
               </router-link>
             </p>
@@ -163,34 +163,67 @@ export default {
   },
   methods: {
     resPass () {
-      this.actionReset(this.form)
-      // .then((result) => {
-      console.log(this.form)
-      // })
+      if (this.form.emailForgot === '') {
+        this.$swal('Data cannot be empty!')
+      } else {
+        this.actionReset(this.form.emailForgot)
+          .then((result) => {
+            if (result === 'Email invalid') {
+              this.$swal('Email invalid. Please sign up!')
+            } else if (result === 'Check your email to reset password') {
+              this.$swal('Check your email to reset password')
+              this.$router.push('/')
+            }
+          })
+      }
     },
     onLoginPelamar () {
-      this.actionLogin(this.form)
-        .then((result) => {
-          if (result === 'Email invalid') {
-            this.$swal("Email doesn't exist!")
-            localStorage.removeItem('token')
-          } else if (result === 'Password invalid') {
-            this.$swal('Wrong Password!')
-            localStorage.removeItem('token')
-          } else if (result === 'Please check your email to activation') {
-            this.$swal('Check your email activation!!')
-            localStorage.removeItem('token')
-          } else {
-            this.$router.push('/')
-          }
-        })
-        .catch((err) => {
-          alert(err)
-        })
+      if (this.form.email === '' || this.form.password === '') {
+        this.$swal('Data cannot be empty!')
+      } else {
+        this.actionLogin(this.form)
+          .then((result) => {
+            if (result === 'Email invalid') {
+              this.$swal("Email doesn't exist!")
+              localStorage.removeItem('token')
+            } else if (result === 'Password invalid') {
+              this.$swal('Wrong Password!')
+              localStorage.removeItem('token')
+            } else if (result === 'Please check your email to activation') {
+              this.$swal('Check your email activation!!')
+              localStorage.removeItem('token')
+            } else {
+              this.$router.push('/')
+            }
+          })
+          .catch((err) => {
+            alert(err)
+          })
+      }
     },
     onLoginPerekrut () {
-      console.log(this.form.email)
-      console.log(this.form.password)
+      if (this.form.email === '' || this.form.password === '') {
+        this.$swal('Data cannot be empty!')
+      } else {
+        this.actionLogin(this.form)
+          .then((result) => {
+            if (result === 'Email invalid') {
+              this.$swal("Email doesn't exist!")
+              localStorage.removeItem('token')
+            } else if (result === 'Password invalid') {
+              this.$swal('Wrong Password!')
+              localStorage.removeItem('token')
+            } else if (result === 'Please check your email to activation') {
+              this.$swal('Check your email activation!!')
+              localStorage.removeItem('token')
+            } else {
+              this.$router.push('/')
+            }
+          })
+          .catch((err) => {
+            alert(err)
+          })
+      }
     },
     ...mapActions({
       actionLogin: 'auth/login',
