@@ -181,10 +181,9 @@ export default {
           .then((result) => {
             if (result === 'Please check your email to activation') {
               this.$swal('Please check your email to activation')
+              this.$router.push('/login')
             } else if (result === 'User Already exist') {
               this.$swal('Your email already exist!')
-            } else {
-              this.$router.push('/login')
             }
           })
           .catch((err) => {
@@ -204,10 +203,9 @@ export default {
           .then((result) => {
             if (result === 'Please check your email to activation') {
               this.$swal('Please check your email to activation')
+              this.$router.push('/login')
             } else if (result === 'User Already exist') {
               this.$swal('Your email already exist!')
-            } else {
-              this.$router.push('/login')
             }
           })
           .catch((err) => {
