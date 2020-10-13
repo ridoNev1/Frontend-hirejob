@@ -5,7 +5,7 @@
       <div class="container pt-5 portofolio-box">
         <div class="profile-applicant">
           <div class="profile-bg">
-            <div class="profile-picture" :style="`background-image: url(http://localhost:3000/${detailUser.image});`">
+            <div class="profile-picture" :style="`background-image: url(http://54.160.81.6:3002/${detailUser.image});`">
               <span></span>
             </div>
           </div>
@@ -35,7 +35,7 @@
             <div class="main-content">
               <div class="portofolio" v-if="switchContent === 0">
                 <div class="portfolio-project" v-for="(item, index) in dataPortfolio" :key="index">
-                  <div class="portofolio-pict" :style="`background-image: url(http://localhost:3000/${item.image_port});`"><span></span></div>
+                  <div class="portofolio-pict" :style="`background-image: url(http://54.160.81.6:3002/${item.image_port});`"><span></span></div>
                   <p class="font-weight-bold mb-3 mt-2">{{item.name_app}}</p>
                 </div>
               </div>
@@ -73,7 +73,6 @@ export default {
     return {
       switchToggle: 0,
       switchContent: 0,
-      dataSkill: ['PHP', 'Phyton'],
       dataUser: JSON.parse(localStorage.getItem('datauser'))
     }
   },
