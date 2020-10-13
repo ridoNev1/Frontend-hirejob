@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="landing-page">
     <Navbar />
     <div class="container-fluid">
     <div>
@@ -186,53 +186,102 @@
     </div>
 
     <!-- testimonials -->
-    <div class="testimonials py-5">
-      <b-col lg="12" sm="12" cols="12" class="mb-5">
-        <h1 class="text-center py-4">Their opinion about peworld</h1>
-     <b-row>
-         <b-col lg="3" sm="3" cols="3" class="mx-5 slide">
-           <b-row>
-             <b-col lg="12" sm="12" cols="12" class="avatar text-center">
-               <img class="py-4" src="../assets/img/people1.svg" alt="">
-              <h1 class="px-5">Rido Maulana</h1>
-             <p class="px-5">Fullstack Developer</p>
-             <div class="px-5 message-testimonials">
-               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
-             </div>
-             </b-col>
-           </b-row>
-         </b-col>
+    <div>
+      <div class="testimonial-page">
+        <b-carousel controls indicators class="bg-transparent" style="box-shadow: none; width: 1250px;">
+          <b-carousel-slide>
+            <template v-slot:img>
+              <div class="list-testimonials" style="padding: 0 84px;">
+                <div class="card-testi">
+                  <img src="../assets/img/people1.svg" alt="" class="image-testi">
+                  <h3 class="font-weight-bold mt-1">Rido Maulana</h3>
+                  <p class="m-1 text-secondary">Fullstack Developer</p>
+                  <div class="message-testimonials">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
+                  </div>
+                </div>
+                <div class="card-testi">
+                  <img src="../assets/img/people1.svg" alt="" class="image-testi">
+                  <h3 class="font-weight-bold mt-1">Rido Maulana</h3>
+                  <p class="m-1 text-secondary">Fullstack Developer</p>
+                  <div class="message-testimonials">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
+                  </div>
+                </div>
+                <div class="card-testi">
+                  <img src="../assets/img/people1.svg" alt="" class="image-testi">
+                  <h3 class="font-weight-bold mt-1">Rido Maulana</h3>
+                  <p class="m-1 text-secondary">Fullstack Developer</p>
+                  <div class="message-testimonials">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </b-carousel-slide>
+          <b-carousel-slide>
+            <template v-slot:img>
+              <div class="list-testimonials" style="padding: 0 84px;">
+                <div class="card-testi">
+                  <img src="../assets/img/people1.svg" alt="" class="image-testi">
+                  <h3 class="font-weight-bold mt-1">Rido Maulana</h3>
+                  <p class="m-1 text-secondary">Fullstack Developer</p>
+                  <div class="message-testimonials">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
+                  </div>
+                </div>
+                <div class="card-testi">
+                  <img src="../assets/img/people1.svg" alt="" class="image-testi">
+                  <h3 class="font-weight-bold mt-1">Rido Maulana</h3>
+                  <p class="m-0">Fullstack Developer</p>
+                  <div class="message-testimonials">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
+                  </div>
+                </div>
+                <div class="card-testi">
+                  <img src="../assets/img/people1.svg" alt="" class="image-testi">
+                  <h3 class="font-weight-bold mt-1">Rido Maulana</h3>
+                  <p class="m-1 text-secondary">Fullstack Developer</p>
+                  <div class="message-testimonials">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </b-carousel-slide>
+          <b-carousel-slide>
+            <template v-slot:img>
+              <div class="list-testimonials" style="padding: 0 84px;">
+                <div class="card-testi">
+                  <img src="../assets/img/people1.svg" alt="" class="image-testi">
+                  <h3 class="font-weight-bold mt-1">Rido Maulana</h3>
+                  <p class="m-1 text-secondary">Fullstack Developer</p>
+                  <div class="message-testimonials">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
+                  </div>
+                </div>
+                <div class="card-testi">
+                  <img src="../assets/img/people1.svg" alt="" class="image-testi">
+                  <h3 class="font-weight-bold mt-1">Rido Maulana</h3>
+                  <p class="m-1 text-secondary">Fullstack Developer</p>
+                  <div class="message-testimonials">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
+                  </div>
+                </div>
+                <div class="card-testi">
+                  <img src="../assets/img/people1.svg" alt="" class="image-testi">
+                  <h3 class="font-weight-bold mt-1">Rido Maulana</h3>
+                  <p class="m-1 text-secondary">Fullstack Developer</p>
+                  <div class="message-testimonials">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </b-carousel-slide>
+        </b-carousel>
+      </div>
 
-        <b-col lg="3" sm="3" cols="3" class=" mx-5 slide">
-           <b-row>
-             <b-col lg="12" sm="12" cols="12" class="avatar text-center">
-               <img class="py-4" src="../assets/img/people1.svg" alt="">
-              <h1 class="px-5">Riko Arafi</h1>
-             <p class="px-5">Frontend Developer</p>
-             <div class="px-5 message-testimonials">
-               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
-             </div>
-             </b-col>
-           </b-row>
-         </b-col>
-         <b-col lg="3" sm="3" cols="3" class="mx-5 slide">
-           <b-row>
-             <b-col lg="12" sm="12" cols="12" class="avatar text-center">
-               <img class="py-4" src="../assets/img/people1.svg" alt="">
-              <h1 class="px-5">Riza Radia Rivaldo</h1>
-             <p class="px-5">Backend Developer</p>
-             <div class="px-5 message-testimonials">
-               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
-             </div>
-             </b-col>
-           </b-row>
-         </b-col>
-         <!-- slide 2  -->
-
-         <!-- slide 3  -->
-
-     </b-row>
-      </b-col>
       <!-- start now -->
       <div class="my-5 mx-5 py-5">
         <b-col lg="12" sm="12" cols="12" class="start-now">
@@ -269,6 +318,9 @@ export default {
 }
 </script>
 <style scoped>
+.landing-page {
+  font-family: 'Open Sans', sans-serif;
+}
   .button-landing{
     background: #5E50A1;
 border-radius: 4px;
@@ -324,9 +376,37 @@ border-radius: 4px;
   .start-now button:hover{
    color: black;
   }
+  .card-testi {
+    background-color: #fff;
+    padding: 15px 30px;
+    width: 270px;
+    /* text-align: center; */
+  }
   /* .avatar{
     background: rgba(251, 176, 23, 0.37);
   } */
+  .image-testi {
+    border: 4px solid #FBB017;
+    border-radius: 65px;
+  }
+  .list-testimonials {
+    display: flex;
+    justify-content: space-between;
+  }
+  .testimonial-page {
+    overflow: scroll;
+    padding-bottom: 20px;
+  }
+  .testimonial-page::-webkit-scrollbar {
+    width: 0;
+    height: 2px;
+  }
+  .testimonial-page::-webkit-scrollbar-thumb {
+    background-color: rgb(90, 90, 90);
+  }
+  .testimonial-page::-webkit-scrollbar-track {
+    background-color: rgb(197, 197, 197);
+  }
   @media only screen and (max-width: 700px) {
   .img-top{
     display: none;
