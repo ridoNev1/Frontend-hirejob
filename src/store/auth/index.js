@@ -7,7 +7,7 @@ const state = () => {
     detailUser: [],
     dataPorfolio: [],
     allUser: [],
-    getExperience: []
+    dataExperience: []
   }
 }
 const getters = {
@@ -29,14 +29,14 @@ const getters = {
     return state.dataPorfolio
   },
   getAllUser (state) {
-    // const data1 = state.allUser
-    // const data2 = []
-    // const newData = data1.map(e => {
-    // })
-    // console.log(newData)
+    const data1 = state.allUser
+    const skill1 = `${data1.skill}`
+    const skill2 = skill1.split(',')
+    data1.skill = skill2
+    return data1
   },
   getExperience (state) {
-    return state.getExperience
+    return state.dataExperience
   }
 }
 
@@ -51,7 +51,7 @@ const mutations = {
     state.allUser = payload
   },
   SET_EXPERIENCE: (state, payload) => {
-    state.getExperience = payload
+    state.dataExperience = payload
   }
 }
 
@@ -180,6 +180,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.get(`${url}/v1/experience/getexperience/${payload}`).then((result) => {
         console.log(result)
+        context.commit('SET_EXPERIENCE', result.data.data)
       }).catch((err) => {
         console.log(err)
       })

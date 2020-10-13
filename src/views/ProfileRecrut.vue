@@ -1,12 +1,8 @@
 <template>
     <div>
         <Navbar />
-            <div class="container-fluid">
-                    <EditProfile type="profilerecrut" />
-          </div>
-      <div>
+            <EditProfile type="profilerecrut" />
           <Footer />
-      </div>
 </div>
 </template>
 <script>
@@ -31,9 +27,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-.container-fluid{
-  background: #f6f7f8;
-  padding: 30px;
-}
-</style>

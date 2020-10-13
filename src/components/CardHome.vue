@@ -37,6 +37,7 @@ export default {
   },
   mounted () {
     this.getDataUser()
+    console.log(this.allUsers)
   }
 }
 </script>

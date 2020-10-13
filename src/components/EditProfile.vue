@@ -1,10 +1,11 @@
 <template>
   <div>
+    <div class="container-fluid">
     <div v-if="type === 'profile'">
       <b-col lg="12">
         <!-- form pencari kerja -->
         <b-row class="users">
-          <b-col lg="4" class="mt-5">
+          <b-col lg="4" cols="12" class="mt-5">
             <UserCard />
             <b-row class="text-left">
               <b-col lg="12" class="my-3">
@@ -21,9 +22,9 @@
               </b-col>
             </b-row>
           </b-col>
-          <b-col lg="8">
+          <b-col lg="8" cols="12">
             <b-row>
-              <b-col lg="12" class="profile-user">
+              <b-col lg="12" class="profile-user mt-5">
                 <b-row class="">
                   <b-col lg="12">
                     <h1
@@ -124,7 +125,7 @@
               <b-col lg="12" class="experience my-4">
                 <b-row class="">
                   <!-- pembungkus experience -->
-                  <div style="width:100%" v-for="(item,index) in getExperience" :key="index">
+                  <div style="width:100%" v-for="(item,index) in dataExperience" :key="index">
                   <b-col lg="12">
                     <h1
                       class="px-2 py-3"
@@ -386,15 +387,14 @@
     </div>
 
     <div v-else>
-      <b-row>
-        <b-col lg="12" class="profile-company">
-          <b-row class="">
-            <b-col lg="4" class="mt-5 px-4">
+        <b-col lg="12" class="pt-5 ">
+          <b-row >
+            <b-col lg="4" cols="12" >
               <UserCard />
               <b-row class="text-left">
                 <b-col lg="12" class="my-3">
                   <button
-                    class="btn btn-save"
+                    class="btn btn-save-recrut"
                     type="profilerecrut"
                     @click="saveDataRecruter()"
                   >
@@ -402,11 +402,11 @@
                   </button>
                 </b-col>
                 <b-col lg="12" class="">
-                  <button class="btn btn-cancel">Batal</button>
+                  <button class="btn btn-cancel-recrut">Batal</button>
                 </b-col>
               </b-row>
             </b-col>
-            <b-col lg="8">
+            <b-col lg="8" cols="12" class="profile-company ">
               <b-row>
                 <b-col lg="12">
                   <h1
@@ -497,7 +497,7 @@
             </b-col>
           </b-row>
         </b-col>
-      </b-row>
+    </div>
     </div>
   </div>
 </template>
@@ -567,13 +567,6 @@ export default {
     UserCard
   },
   methods: {
-    ...mapActions({
-      dataUser: 'auth/getOneUser',
-      updateUser: 'auth/updateProfileTalent',
-      insertPortfolio: 'auth/addPortfolio',
-      getExperience: 'auth/getExperience',
-      insertExperience: 'auth/insertExperience'
-    }),
     uploadPortfolio () {
       const dataImage = this.$refs.myVueDropzone.getAcceptedFiles()
       this.portfolio.imagePortfolio = dataImage[0]
@@ -631,12 +624,19 @@ export default {
     },
     saveDataRecruter () {
       console.log(this.company)
-    }
+    },
+    ...mapActions({
+      dataUser: 'auth/getOneUser',
+      updateUser: 'auth/updateProfileTalent',
+      insertPortfolio: 'auth/addPortfolio',
+      getExperience: 'auth/getExperience',
+      insertExperience: 'auth/insertExperience'
+    })
   },
   computed: {
     ...mapGetters({
       getDataUser: 'auth/getDetailUser',
-      getExperience: 'auth/getExperience'
+      dataExperience: 'auth/getExperience'
     })
   },
   mounted () {
@@ -652,11 +652,20 @@ export default {
       this.users.bioApplicant = data1.description
       this.users.dataSkill = data1.skill
     })
-    // this.getExperience(this.usersData.id)
+    this.getExperience(this.usersData.id)
   }
 }
 </script>
 <style scoped>
+.profile-bg {
+  background-color: #5E50A1;
+  border-radius: 8px 8px 0 0;
+  padding-left: 50px;
+  padding-top: 30px;
+}
+.container-fluid{
+  background: #f6f7f8;
+}
 .profile-user {
   background: #ffffff;
   border-radius: 8px;
@@ -670,7 +679,7 @@ export default {
   border-radius: 8px;
 }
 .btn-save {
-  width: 100%;
+  width: 80%;
   color: white;
   background: #5e50a1;
   border-radius: 4px;
@@ -681,13 +690,37 @@ export default {
   border-radius: 4px;
   border: 1px solid #5e50a1;
 }
+.btn-save-recrut {
+  width: 80%;
+  color: white;
+  background: #5e50a1;
+  border-radius: 4px;
+}
+.btn-save-recrut:hover {
+  color: #5e50a1;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #5e50a1;
+}
 .btn-cancel {
-  width: 100%;
+  width: 80%;
   border: 1px solid #5e50a1;
   box-sizing: border-box;
   border-radius: 4px;
 }
 .btn-cancel:hover {
+  color: white;
+  background: #5e50a1;
+  border-radius: 4px;
+  border: 1px solid #5e50a1;
+}
+.btn-cancel-recrut {
+  width: 80%;
+  border: 1px solid #5e50a1;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+.btn-cancel-recrut:hover {
   color: white;
   background: #5e50a1;
   border-radius: 4px;
@@ -760,19 +793,30 @@ export default {
 
 /* company */
 .profile-company {
-  padding: 0px 45px;
   background: #ffffff;
   border-radius: 8px;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 400px) {
   .radio-box {
     padding: 1px;
   }
   .profile-company {
-    padding: 0px;
     background: #ffffff;
     border-radius: 8px;
+    margin-top: 60px;
   }
+  .btn-save-recrut {
+  width: 100%;
+}
+.btn-cancel-recrut {
+  width: 100%;
+}
+.btn-cancel {
+  width: 100%;
+}
+.btn-save {
+  width: 100%;
+}
 }
 
 /* skill-list */
