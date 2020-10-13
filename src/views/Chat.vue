@@ -31,7 +31,7 @@
               <p class="font-weight-bold mt-2">Tokopedia</p>
             </div>
             <div>
-              <p class="mt-2">Subject: <span class="font-weight-bold">Proyek</span></p>
+              <p class="mt-2">Position: <span class="font-weight-bold">Proyek</span></p>
               <p class="m-0"><img src="../assets/img/mail.png" alt="mail"> hrdhr@gmail.com</p>
               <p class="mt-1"><b-icon icon="telephone-plus" scale="1.2" class="ml-1 mr-1"></b-icon> 023134493113</p>
               <p>Saya sangat tertarik untuk mengundang anda untuk bergabung. Apabila anda tertarik,

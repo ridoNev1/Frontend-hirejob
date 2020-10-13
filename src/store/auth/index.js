@@ -5,7 +5,8 @@ const state = () => {
   return {
     token: localStorage.getItem('token') || null,
     detailUser: [],
-    dataPorfolio: []
+    dataPorfolio: [],
+    allUser: []
   }
 }
 const getters = {
@@ -25,6 +26,13 @@ const getters = {
   },
   getPortfolio (state) {
     return state.dataPorfolio
+  },
+  getAllUser (state) {
+    const data1 = state.allUser
+    const skill1 = `${data1.skill}`
+    const skill2 = skill1.split(',')
+    data1.skill = skill2
+    return data1
   }
 }
 
@@ -34,6 +42,9 @@ const mutations = {
   },
   SET_PORTFOLIO: (state, payload) => {
     state.dataPorfolio = payload
+  },
+  SET_ALL_USERS: (state, payload) => {
+    state.allUser = payload
   }
 }
 
@@ -98,7 +109,6 @@ const actions = {
       })
     })
   },
-
   updateProfileTalent (context, payload) {
     return new Promise((resolve, reject) => {
       const skill = payload.dataSkill
@@ -124,7 +134,7 @@ const actions = {
     })
   },
   addPortfolio (context, payload) {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       const fd = new FormData()
       fd.append('name_app', payload.namePortfolio)
       fd.append('id_user', payload.id)
@@ -149,8 +159,17 @@ const actions = {
         .catch(err => {
           console.log(err)
         })
-
     })
+  },
+  getAllUser (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios.get(`${url}/v1/user`).then(result => {
+        context.commit('SET_ALL_USERS', result.data.data)
+      }).catch(err => {
+        console.log(err)
+      })
+    })
+  }
 }
 
 export default {

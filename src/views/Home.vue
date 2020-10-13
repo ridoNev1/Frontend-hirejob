@@ -24,14 +24,9 @@
                     </div>
                 </b-col>
                 <b-col lg="12" class="my-3 mb-4">
-                    <b-row class="card-body">
-                        <b-col lg="3" sm="6" cols="12">
-                            <CardHome />
-                        </b-col>
-                        <b-col lg="3" sm="6" cols="12">
-                            <CardHome />
-                        </b-col>
-                    </b-row>
+                    <div>
+                        <CardHome />
+                    </div>
                 </b-col>
                 <b-col lg="12" class="pagination-component">
                     <nav aria-label="Page navigation example">
@@ -57,6 +52,7 @@
 import Navbar from '../components/Navbar'
 import CardHome from '../components/CardHome'
 import Footer from '../components/Footer'
+
 export default {
   components: {
     Navbar,
