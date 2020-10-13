@@ -90,7 +90,7 @@ export default {
   border-radius: 60px;
   position: relative;
   top: 50px;
-  margin-left: 40%;
+  margin-left: 44%;
 }
 .profile-bg {
   background-color: #5E50A1;

@@ -1,8 +1,22 @@
 <template>
     <div>
-        <div v-if="type === 'profile'">
+        <div v-if="type==='profile'">
+            <b-col lg="12">
         <!-- form pencari kerja -->
         <b-row class="users">
+            <b-col lg="4" class="mt-5">
+                <UserCard />
+                <b-row class="text-left">
+                          <b-col lg="12" class="my-3">
+                            <button class="btn btn-save" type="profilerecrut" @click="saveDataRecruter()">Simpan</button>
+                          </b-col>
+                          <b-col lg="12" class="">
+                           <button class="btn btn-cancel">Batal</button>
+                          </b-col>
+                        </b-row>
+            </b-col>
+            <b-col lg="8">
+                <b-row>
             <b-col lg="12" class="profile-user">
                 <b-row class="">
                     <b-col lg="12">
@@ -24,7 +38,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Tempat Kerja</label>
-                                 <input type="text" class="form-control" placeholder="Masukan Tempat Kerja">
+                                 <input type="text" class="form-control" placeholder="Masukan Tempat Kerja" v-model="placeWorkApplicant" >
                             </div>
                             <div class="form-group">
                                 <label>Deskripsi singkat</label>
@@ -63,7 +77,7 @@
                         <form>
                             <div class="form-group">
                                 <label>Posisi</label>
-                                <input type="text" class="form-control" placeholder="Fullstack Developer">
+                                <input type="text" class="form-control" placeholder="Fullstack Developer" v-model="positionExperience">
                             </div>
                         </form>
                     </b-col>
@@ -72,13 +86,13 @@
                                     <b-col lg="6" class="text-left">
                                         <div class="form-group">
                                             <label>Nama Perusahaan</label>
-                                            <input type="text" class="form-control" placeholder="PT Apa Aja Boleh">
+                                            <input type="text" class="form-control" placeholder="PT Apa Aja Boleh" v-model="companyExperience">
                                         </div>
                                     </b-col>
                                     <b-col lg="6">
                                         <div class="form-group">
                                             <label class="text-left">Bulan/Tahun</label>
-                                            <input type="text" class="form-control" placeholder="Januari 2088">
+                                            <input type="text" class="form-control" placeholder="Januari 2088" v-model="yearsExperience">
                                         </div>
                                     </b-col>
                                 </b-row>
@@ -86,7 +100,7 @@
                     <b-col lg="12">
                         <div class="form-group">
                                 <label>Deskripsi singkat</label>
-                                <textarea class="form-control" rows="5" placeholder="Deskripsi Pekerjaan anda"></textarea>
+                                <textarea class="form-control" rows="5" placeholder="Deskripsi Pekerjaan anda" v-model="descriptionExperience"></textarea>
                         </div>
                     </b-col>
                     <b-col lg="12" class="my-3">
@@ -107,11 +121,11 @@
                         <form @submit.prevent="upload">
                             <div class="form-group">
                                 <label>Nama Aplikasi</label>
-                                <input type="text" class="form-control" placeholder="Masukkan nama aplikasi">
+                                <input type="text" class="form-control" placeholder="Masukkan nama aplikasi" v-model="namePortfolio">
                             </div>
                             <div class="form-group">
                                 <label>Link Repository</label>
-                                <input type="text" class="form-control" placeholder="Masukkan link repository">
+                                <input type="text" class="form-control" placeholder="Masukkan link repository" v-model="linkRepository">
                             </div>
                             <div class="form-group">
                                 <label>Type Portfolio</label>
@@ -139,7 +153,7 @@
                             </b-row>
                             </div>
                             <vue-dropzone ref="myVueDropzone" id="dropzone customdropzone" :options="dropzoneOptions" :useCustomSlot=true>
-                                <img src="../assets/img/dragndrop.png" alt="dragndrop">
+                                <img src="../assets/img/dragndrop.png" style="width:100%" alt="dragndrop">
                             </vue-dropzone>
                             <b-col lg="12" class="my-3 p-0">
                                 <button class="btn btn-experience" type="submit">Tambah Portfolio</button>
@@ -149,15 +163,30 @@
                 </b-row>
             </b-col>
             <!-- end portofolio -->
+            </b-row>
+            </b-col>
         </b-row>
+        </b-col>
         <!-- end form pencari kerja -->
         </div>
 
         <div v-else>
-        <!-- company / perekrut -->
         <b-row >
             <b-col lg="12" class="profile-company">
                 <b-row class="">
+                    <b-col lg="4" class="mt-5 px-4">
+                        <UserCard />
+                        <b-row class="text-left">
+                                <b-col lg="12" class="my-3">
+                                    <button class="btn btn-save" type="profilerecrut" @click="saveDataRecruter()">Simpan</button>
+                                </b-col>
+                                <b-col lg="12" class="">
+                                <button class="btn btn-cancel">Batal</button>
+                                </b-col>
+                                </b-row>
+                    </b-col>
+                    <b-col lg="8">
+                        <b-row>
                     <b-col lg="12">
                     <h1 class="px-2 py-3" style="border-bottom: 1px solid #C4C4C4; font-size:25px;">Data Diri</h1>
                     </b-col>
@@ -166,45 +195,48 @@
                         <form>
                             <div class="form-group">
                                 <label>Nama Perusahaan</label>
-                                <input type="text" class="form-control" placeholder="Masukan nama Perusahaan">
+                                <input type="text" class="form-control" placeholder="Masukan nama Perusahaan" v-model="company.nameCompanyRecruter">
                             </div>
                             <div class="form-group">
                                 <label>Bidang</label>
-                                 <input type="text" class="form-control" placeholder="Masukan bidang perusahaan ex : Financial">
+                                 <input type="text" class="form-control" placeholder="Masukan bidang perusahaan ex : Financial" v-model="company.typeCompanyRecruter">
                             </div>
                             <div class="form-group">
                                 <label>Kota</label>
-                                 <input type="text" class="form-control" placeholder="Masukan Kota">
+                                 <input type="text" class="form-control" placeholder="Masukan Kota" v-model="company.cityCompanyRecruter">
                             </div>
                             <div class="form-group">
                                 <label>Deskripsi singkat</label>
-                                <textarea class="form-control" rows="5" placeholder="Tuliskan deskripsi singkat"></textarea>
+                                <textarea class="form-control" rows="5" placeholder="Tuliskan deskripsi singkat" v-model="company.recruterDescription"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                 <input type="text" class="form-control" placeholder="Masukan Email">
+                                 <input type="text" class="form-control" placeholder="Masukan Email" v-model="company.emailRecruterCompany">
                             </div>
                             <div class="form-group">
                                 <label>Instagram</label>
-                                 <input type="text" class="form-control" placeholder="Masukan Nama Instagram">
+                                 <input type="text" class="form-control" placeholder="Masukan Nama Instagram" v-model="company.instagramRecruterCompany">
                             </div>
                             <div class="form-group">
                                 <label>Nomor Telepon</label>
-                                 <input type="text" class="form-control" placeholder="Masukan Nomor Telepon">
+                                 <input type="text" class="form-control" placeholder="Masukan Nomor Telepon" v-model="company.phoneRecruterCompany">
                             </div>
                             <div class="form-group">
                                 <label>Linkedin</label>
-                                 <input type="text" class="form-control" placeholder="Masukan Nama Linkedin">
+                                 <input type="text" class="form-control" placeholder="Masukan Nama Linkedin" v-model="company.linkedinRecruterCompany">
                             </div>
                         </form>
                     </b-col>
                 </b-row>
             </b-col>
+            </b-row>
+                    </b-col>
         </b-row>
         </div>
     </div>
 </template>
 <script>
+import UserCard from '../components/UserCard'
 import vue2Dropzone from 'vue2-dropzone'
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 
@@ -222,13 +254,33 @@ export default {
       userSkill: null,
       fullnameApplicant: null,
       jobdescApplicant: null,
+      placeWorkApplicant: null,
       domApplicant: null,
       bioApplicant: null,
-      portfolioType: null
+      positionExperience: null,
+      companyExperience: null,
+      yearsExperience: null,
+      descriptionExperience: null,
+      namePortfolio: null,
+      linkRepository: null,
+      portfolioType: null,
+
+      // company
+      company: {
+        nameCompanyRecruter: null,
+        typeCompanyRecruter: null,
+        cityCompanyRecruter: null,
+        recruterDescription: null,
+        emailRecruterCompany: null,
+        instagramRecruterCompany: null,
+        phoneRecruterCompany: null,
+        linkedinRecruterCompany: null
+      }
     }
   },
   components: {
-    vueDropzone: vue2Dropzone
+    vueDropzone: vue2Dropzone,
+    UserCard
   },
   methods: {
     upload () {
@@ -241,7 +293,13 @@ export default {
     },
     typePortfolio (value) {
       this.portfolioType = value
+    },
+    saveDataRecruter () {
+      console.log(this.company)
     }
+  },
+  computed () {
+    console.log(this.company)
   }
 }
 </script>
@@ -258,6 +316,30 @@ border-radius: 8px;
     background: #FFFFFF;
 border-radius: 8px;
 }
+ .btn-save{
+      width: 100%;
+      color: white;
+      background: #5E50A1;
+border-radius: 4px;
+    }
+    .btn-save:hover{
+      color: #5E50A1;
+      background: white;
+border-radius: 4px;
+border: 1px solid #5E50A1;
+    }
+    .btn-cancel{
+      width: 100%;
+      border: 1px solid #5E50A1;
+      box-sizing: border-box;
+      border-radius: 4px;
+    }
+    .btn-cancel:hover{
+      color: white;
+      background: #5E50A1;
+border-radius: 4px;
+border: 1px solid #5E50A1;
+    }
 .input-search .form-control{
     height: 55px;
 }
