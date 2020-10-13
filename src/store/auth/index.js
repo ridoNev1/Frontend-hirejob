@@ -49,6 +49,9 @@ const mutations = {
   },
   SET_ALL_USERS: (state, payload) => {
     state.allUser = payload
+  },
+  SET_EXPERIENCE: (state, payload) => {
+    state.getExperience = payload
   }
 }
 
@@ -191,7 +194,7 @@ const actions = {
         id_users: payload.id,
         id_company_exp: payload.companyExperience
       }).then((result) => {
-        console.log(result)
+        context.commit('SET_EXPERIENCE', result.data.data)
       }).catch((err) => {
         console.log(err)
       })

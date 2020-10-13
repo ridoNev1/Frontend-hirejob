@@ -124,7 +124,7 @@
               <b-col lg="12" class="experience my-4">
                 <b-row class="">
                   <!-- pembungkus experience -->
-                  <div style="width:100%" v-for="(item,index) in dataTester" :key="index">
+                  <div style="width:100%" v-for="(item,index) in getExperience" :key="index">
                   <b-col lg="12">
                     <h1
                       class="px-2 py-3"
@@ -141,7 +141,7 @@
                           type="text"
                           class="form-control"
                           placeholder="Fullstack Developer"
-                          v-model="oldexperience.positionExperience"
+                          v-model="item.position" :position="item.position"
                         />
                       </div>
                     <!--  -->
@@ -155,7 +155,7 @@
                             type="text"
                             class="form-control"
                             placeholder="PT Apa Aja Boleh"
-                            v-model="oldexperience.companyExperience"
+                            v-model="item.id_company_exp" :id_company_exp="item.id_company_exp"
                           />
                         </div>
                       </b-col>
@@ -166,7 +166,7 @@
                             type="text"
                             class="form-control"
                             placeholder="Januari 2088"
-                            v-model="oldexperience.yearsExperience"
+                            v-model="item.time_exp" :time_exp="item.time_exp"
                           />
                         </div>
                       </b-col>
@@ -179,7 +179,7 @@
                         class="form-control"
                         rows="5"
                         placeholder="Deskripsi Pekerjaan anda"
-                        v-model="oldexperience.descriptionExperience"
+                        v-model="item.description_exp" :description_exp="item.description_exp"
                       ></textarea>
                     </div>
                     <!-- </form> -->
@@ -519,7 +519,6 @@ export default {
         addRemoveLinks: true
       },
       userSkill: null,
-      dataTester: [1, 2],
       users: {
         fullnameApplicant: null,
         jobdescApplicant: null,
@@ -602,6 +601,7 @@ export default {
     addExperience () {
       this.experience.id = this.usersData.id
       this.insertExperience(this.experience)
+      this.getExperience(this.experience.id)
     },
     typePortfolio (value) {
       this.portfolioType = value
@@ -635,7 +635,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getDataUser: 'auth/getDetailUser'
+      getDataUser: 'auth/getDetailUser',
+      getExperience: 'auth/getExperience'
     })
   },
   mounted () {
@@ -651,7 +652,7 @@ export default {
       this.users.bioApplicant = data1.description
       this.users.dataSkill = data1.skill
     })
-    this.getExperience(this.usersData.id)
+    // this.getExperience(this.usersData.id)
   }
 }
 </script>
