@@ -29,11 +29,11 @@ const getters = {
     return state.dataPorfolio
   },
   getAllUser (state) {
-    const data1 = state.allUser
-    const skill1 = `${data1.skill}`
-    const skill2 = skill1.split(',')
-    data1.skill = skill2
-    return data1
+    // const data1 = state.allUser
+    // const data2 = []
+    // const newData = data1.map(e => {
+    // })
+    // console.log(newData)
   },
   getExperience (state) {
     return state.getExperience
