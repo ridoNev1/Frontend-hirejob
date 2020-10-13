@@ -5,28 +5,28 @@
       <div class="container pt-5 portofolio-box">
         <div class="profile-applicant">
           <div class="profile-bg">
-            <div class="profile-picture">
+            <div class="profile-picture" :style="`background-image: url(http://localhost:3000/${detailUser.image});`">
               <span></span>
             </div>
           </div>
           <div class="portofolio-experience p-5">
             <div class="user-applicant-data mt-4">
-              <h5 class="font-weight-bold">Louis Tomlinson</h5>
-              <p class="font-weight-bold">Web Developer</p>
-              <p class="text-secondary" style="margin-bottom: 0;"><img src="../assets/img/map-pin.png" alt="mappin"> Purwokerto, Jawa Tengah</p>
-              <p class="text-secondary pt-2">Freelancer</p>
-              <p class="bio-user">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni dignissimos rerum expedita? Quidem, iure non.</p>
+              <h5 class="font-weight-bold">{{detailUser.name_user}}</h5>
+              <p class="font-weight-bold">{{detailUser.job_desk}}</p>
+              <p class="text-secondary" style="margin-bottom: 0;"><img src="../assets/img/map-pin.png" alt="mappin"> {{detailUser.address}}</p>
+              <p class="text-secondary pt-2">{{detailUser.job_type}}</p>
+              <p class="bio-user">{{detailUser.description}}</p>
               <button class="btn hire-button">Hire</button>
               <div class="mt-5">
                 <p class="font-weight-bold">Skill</p>
                 <div class="skill-list-box">
-                  <p class="skill-list" v-for="(item, index) in dataSkill" :key="index">{{item}}</p>
+                  <p class="skill-list" v-for="(item, index) in detailUser.skill" :key="index">{{item}}</p>
                 </div>
               </div>
-              <p class="mt-5"><img src="../assets/img/mail.png" class="mr-3" alt="email"> Louistommo@gmail.com</p>
-              <p><img src="../assets/img/instagram.png" class="mr-3" alt="instagram"> @Louist91</p>
-              <p><img src="../assets/img/github.png" class="mr-3" alt="github"> @Louistommo</p>
-              <p><img src="../assets/img/gitlab.png" class="mr-3" alt="gitlab"> @luisfonsi</p>
+              <p class="mt-5"><img src="../assets/img/mail.png" class="mr-3" alt="email"> {{detailUser.s_email}}</p>
+              <p><img src="../assets/img/instagram.png" class="mr-3" alt="instagram"> {{detailUser.s_instagram}}</p>
+              <p><img src="../assets/img/github.png" class="mr-3" alt="github"> {{detailUser.s_github}}</p>
+              <p><img src="../assets/img/gitlab.png" class="mr-3" alt="gitlab"> @usergitlab</p>
             </div>
             <div class="navbar-portofolio mt-5">
               <p class="switch-nav switch-toggle" @click="switchToggle1">Portofolio</p>
@@ -34,9 +34,10 @@
             </div>
             <div class="main-content">
               <div class="portofolio" v-if="switchContent === 0">
-                <div class="portofolio-pict"><span></span></div>
-                <div class="portofolio-pict"><span></span></div>
-                <div class="portofolio-pict"><span></span></div>
+                <div class="portfolio-project" v-for="(item, index) in dataPortfolio" :key="index">
+                  <div class="portofolio-pict" :style="`background-image: url(http://localhost:3000/${item.image_port});`"><span></span></div>
+                  <p class="font-weight-bold mb-3 mt-2">{{item.name_app}}</p>
+                </div>
               </div>
               <div class="experience mt-4" v-else>
                 <div class="experience-list">
@@ -61,6 +62,7 @@
 
 <script>
 import Navbar from '../components/Navbar'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'Portofolio',
@@ -71,8 +73,15 @@ export default {
     return {
       switchToggle: 0,
       switchContent: 0,
-      dataSkill: ['PHP', 'Phyton']
+      dataSkill: ['PHP', 'Phyton'],
+      dataUser: JSON.parse(localStorage.getItem('datauser'))
     }
+  },
+  computed: {
+    ...mapGetters({
+      detailUser: 'auth/getDetailUser',
+      dataPortfolio: 'auth/getPortfolio'
+    })
   },
   methods: {
     switchToggle1 () {
@@ -102,12 +111,18 @@ export default {
         this.switchToggle = 1
       }
       this.switchContent = 1
-    }
+    },
+    ...mapActions({
+      getDetailUser: 'auth/getOneUser',
+      getPortfolio: 'auth/findPortfolio'
+    })
   },
   mounted () {
     const tgl1 = document.querySelector('.switch-toggle')
     tgl1.classList.toggle('switch-nav2')
     this.switchToggle = 1
+    this.getDetailUser(this.dataUser.id)
+    this.getPortfolio(this.dataUser.id)
   }
 }
 </script>
@@ -116,7 +131,6 @@ export default {
 /* profile-picture */
 .profile-picture {
   width: 120px;
-  background-image: url(../assets/img/soda.jpeg);
   background-size: cover;
   height: 120px;
   border-radius: 60px;
@@ -208,7 +222,6 @@ export default {
 .portofolio-pict {
   width: 219px;
   height: 148px;
-  background-image: url(../assets/img/portofolio.png);
   background-size: cover;
   border-radius: 4px;
 }
