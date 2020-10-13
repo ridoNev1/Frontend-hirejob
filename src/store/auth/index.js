@@ -96,6 +96,11 @@ const actions = {
         console.log(err)
       })
     })
+  },
+  sendEmail (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios.post()
+    })
   }
 }
 

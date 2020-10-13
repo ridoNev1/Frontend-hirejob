@@ -10,6 +10,7 @@ import Profile from '../views/Profile.vue'
 import Chat from '../views/Chat.vue'
 import ProfileRecrut from '../views/ProfileRecrut'
 import Company from '../views/Company.vue'
+import Forgot from '../views/Forgot.vue'
 
 import Home from '../views/Home.vue'
 
@@ -80,6 +81,11 @@ const routes = [
     name: 'Hire',
     component: Hire,
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/forgot',
+    name: 'Forgot',
+    component: Forgot
   },
   {
     path: '/chat',
