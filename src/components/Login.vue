@@ -172,7 +172,7 @@ export default {
               this.$swal('Email invalid. Please sign up!')
             } else if (result === 'Check your email to reset password') {
               this.$swal('Check your email to reset password')
-              this.$router.push('/')
+              window.location = '/login'
             }
           })
       }
