@@ -98,7 +98,7 @@ const actions = {
       })
     })
   },
-<<<<<<< HEAD
+
   updateProfileTalent (context, payload) {
     return new Promise((resolve, reject) => {
       const skill = payload.dataSkill
@@ -124,7 +124,7 @@ const actions = {
     })
   },
   addPortfolio (context, payload) {
-    return new Promise((resolve, reject) => {
+    return new Promise ((resolve, reject) => {
       const fd = new FormData()
       fd.append('name_app', payload.namePortfolio)
       fd.append('id_user', payload.id)
@@ -136,7 +136,8 @@ const actions = {
       }).catch((err) => {
         console.log(err)
       })
-=======
+    })
+  },
   sendEmail (context, payload) {
     return new Promise((resolve, reject) => {
       axios.post(`${url}/v1/user/reset-pass`, {
@@ -148,9 +149,8 @@ const actions = {
         .catch(err => {
           console.log(err)
         })
->>>>>>> bdf57e23fcda321484ecb55414307f10827b1787
+
     })
-  }
 }
 
 export default {
