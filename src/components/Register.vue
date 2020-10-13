@@ -1,17 +1,17 @@
 <template>
-  <div>
+  <div style="height: 131vh;">
     <div class="cont" v-if="type === 'pelamar'">
       <b-row class="no-gutters">
         <b-col lg="6">
           <img class="logo" src="../assets/img/exam.svg" alt="" />
           <div class="divImage">
-            <img src="../assets/img/exmaple.jpg" alt="" />
-            <!-- <img src="../assets/img/exam.svg"> -->
-          </div>
+          <div class="tinted-image"></div>
+          <div class="bannerText"><h3>Temukan developer berbakat & terbaik di berbagai bidang keahlian</h3></div>
+        </div>
         </b-col>
         <b-col lg="6">
           <div class="divForm">
-            <h2 class="textHello">Hello, Fuckin Noise</h2>
+            <h2 class="textHello">Halo, Pewpeople</h2>
             <h2 class="textLogin">Signup</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
@@ -73,13 +73,13 @@
         <b-col lg="6">
           <img class="logo" src="../assets/img/exam.svg" alt="" />
           <div class="divImage">
-            <img src="../assets/img/exmaple.jpg" alt="" />
-            <!-- <img src="../assets/img/exam.svg"> -->
-          </div>
+          <div class="tinted-image"></div>
+          <div class="bannerText"><h3>Temukan developer berbakat & terbaik di berbagai bidang keahlian</h3></div>
+        </div>
         </b-col>
         <b-col lg="6">
           <div class="divForm">
-            <h2 class="textHello">Hello, Fuckin Noise</h2>
+            <h2 class="textHello">Halo, Pewpeople</h2>
             <h2 class="textLogin">Signup</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
@@ -202,6 +202,17 @@ export default {
 </script>
 
 <style scoped>
+.tinted-image {
+  width: 90%;
+  height: 90vh;
+  background: linear-gradient( rgba(94,80,161, 0.8), rgba(94,80,161, 0.8)),
+  url('../assets/img/banner.svg');
+}
+.bannerText {
+  color: #ffffff;
+  margin: -60% 52% 0% 10%;
+  position: absolute;
+}
 .logo {
   position: absolute;
   margin-top: 30px;
@@ -222,7 +233,7 @@ button:hover {
   margin: 50px 20px;
 }
 .cont {
-  margin: 30px 60px !important;
+  padding: 30px 60px !important;
 }
 .divImage img {
   width: 73%;
