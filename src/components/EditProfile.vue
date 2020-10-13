@@ -8,7 +8,7 @@
                 <UserCard />
                 <b-row class="text-left">
                           <b-col lg="12" class="my-3">
-                            <button class="btn btn-save" type="profilerecrut" @click="saveDataRecruter()">Simpan</button>
+                            <button class="btn btn-save" type="profilerecrut" @click="saveDataTalent()">Simpan</button>
                           </b-col>
                           <b-col lg="12" class="">
                            <button class="btn btn-cancel">Batal</button>
@@ -26,23 +26,23 @@
                         <form>
                             <div class="form-group">
                                 <label>Nama Lengkap</label>
-                                <input type="text" class="form-control" placeholder="Masukan nama lengkap" v-model="fullnameApplicant">
+                                <input type="text" class="form-control" placeholder="Masukan nama lengkap" v-model="users.fullnameApplicant">
                             </div>
                             <div class="form-group">
                                 <label>Jobdesk</label>
-                                 <input type="text" class="form-control" placeholder="Masukan Jobdesk" v-model="jobdescApplicant">
+                                 <input type="text" class="form-control" placeholder="Masukan Jobdesk" v-model="users.jobdescApplicant">
                             </div>
                             <div class="form-group">
                                 <label>Domisili</label>
-                                 <input type="text" class="form-control" placeholder="Masukan Domisili" v-model="domApplicant">
+                                 <input type="text" class="form-control" placeholder="Masukan Domisili" v-model="users.domApplicant">
                             </div>
                             <div class="form-group">
                                 <label>Tempat Kerja</label>
-                                 <input type="text" class="form-control" placeholder="Masukan Tempat Kerja" v-model="placeWorkApplicant" >
+                                 <input type="text" class="form-control" placeholder="Masukan Tempat Kerja" v-model="users.placeWorkApplicant" >
                             </div>
                             <div class="form-group">
                                 <label>Deskripsi singkat</label>
-                                <textarea class="form-control" rows="5" placeholder="Tuliskan deskripsi singkat" v-model="bioApplicant"></textarea>
+                                <textarea class="form-control" rows="5" placeholder="Tuliskan deskripsi singkat" v-model="users.bioApplicant"></textarea>
                             </div>
                         </form>
                     </b-col>
@@ -56,7 +56,7 @@
                     </b-col>
                     <b-col lg="12">
                         <div class="skill-list-box">
-                            <p class="skill-list" v-for="(item, index) in dataSkill" :key="index">{{item}}</p>
+                            <p class="skill-list" v-for="(item, index) in users.dataSkill" :key="index">{{item}}</p>
                         </div>
                         <div class="input-group mb-3 mt-3">
                         <input type="text" class="form-control" placeholder="Input skill" v-model="userSkill">
@@ -77,7 +77,7 @@
                         <form>
                             <div class="form-group">
                                 <label>Posisi</label>
-                                <input type="text" class="form-control" placeholder="Fullstack Developer" v-model="positionExperience">
+                                <input type="text" class="form-control" placeholder="Fullstack Developer" v-model="experience.positionExperience">
                             </div>
                         </form>
                     </b-col>
@@ -86,13 +86,13 @@
                                     <b-col lg="6" class="text-left">
                                         <div class="form-group">
                                             <label>Nama Perusahaan</label>
-                                            <input type="text" class="form-control" placeholder="PT Apa Aja Boleh" v-model="companyExperience">
+                                            <input type="text" class="form-control" placeholder="PT Apa Aja Boleh" v-model="experience.companyExperience">
                                         </div>
                                     </b-col>
                                     <b-col lg="6">
                                         <div class="form-group">
                                             <label class="text-left">Bulan/Tahun</label>
-                                            <input type="text" class="form-control" placeholder="Januari 2088" v-model="yearsExperience">
+                                            <input type="text" class="form-control" placeholder="Januari 2088" v-model="experience.yearsExperience">
                                         </div>
                                     </b-col>
                                 </b-row>
@@ -100,11 +100,11 @@
                     <b-col lg="12">
                         <div class="form-group">
                                 <label>Deskripsi singkat</label>
-                                <textarea class="form-control" rows="5" placeholder="Deskripsi Pekerjaan anda" v-model="descriptionExperience"></textarea>
+                                <textarea class="form-control" rows="5" placeholder="Deskripsi Pekerjaan anda" v-model="experience.descriptionExperience"></textarea>
                         </div>
                     </b-col>
                     <b-col lg="12" class="my-3">
-                        <button class="btn btn-experience">Tambah Pengalaman</button>
+                        <button class="btn btn-experience" @click="addExperience">Tambah Pengalaman</button>
                     </b-col>
                 </b-row>
             </b-col>
@@ -118,14 +118,14 @@
                     </b-col>
                     <div class="line py-2"></div>
                     <b-col lg="12">
-                        <form @submit.prevent="upload">
+                        <form @submit.prevent="uploadPortfolio">
                             <div class="form-group">
                                 <label>Nama Aplikasi</label>
-                                <input type="text" class="form-control" placeholder="Masukkan nama aplikasi" v-model="namePortfolio">
+                                <input type="text" class="form-control" placeholder="Masukkan nama aplikasi" v-model="portfolio.namePortfolio">
                             </div>
                             <div class="form-group">
                                 <label>Link Repository</label>
-                                <input type="text" class="form-control" placeholder="Masukkan link repository" v-model="linkRepository">
+                                <input type="text" class="form-control" placeholder="Masukkan link repository" v-model="portfolio.linkRepository">
                             </div>
                             <div class="form-group">
                                 <label>Type Portfolio</label>
@@ -236,6 +236,7 @@
     </div>
 </template>
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import UserCard from '../components/UserCard'
 import vue2Dropzone from 'vue2-dropzone'
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
@@ -244,27 +245,36 @@ export default {
   props: ['type'],
   data () {
     return {
+      usersData: JSON.parse(localStorage.getItem('datauser')),
       image: null,
       dropzoneOptions: {
         url: 'https://httpbin.org/post',
         thumbnailWidth: 200,
         addRemoveLinks: true
       },
-      dataSkill: [],
       userSkill: null,
-      fullnameApplicant: null,
-      jobdescApplicant: null,
-      placeWorkApplicant: null,
-      domApplicant: null,
-      bioApplicant: null,
-      positionExperience: null,
-      companyExperience: null,
-      yearsExperience: null,
-      descriptionExperience: null,
-      namePortfolio: null,
-      linkRepository: null,
-      portfolioType: null,
-
+      users: {
+        fullnameApplicant: null,
+        jobdescApplicant: null,
+        placeWorkApplicant: null,
+        domApplicant: null,
+        bioApplicant: null,
+        dataSkill: []
+      },
+      experience: [
+        {
+          positionExperience: null,
+          companyExperience: null,
+          yearsExperience: null,
+          descriptionExperience: null
+        }
+      ],
+      portfolio: {
+        imagePortfolio: null,
+        namePortfolio: null,
+        linkRepository: null,
+        portfolioType: null
+      },
       // company
       company: {
         nameCompanyRecruter: null,
@@ -283,23 +293,93 @@ export default {
     UserCard
   },
   methods: {
-    upload () {
+    ...mapActions({
+      dataUser: 'auth/getOneUser',
+      updateUser: 'auth/updateProfileTalent',
+      insertPortfolio: 'auth/addPortfolio'
+    }),
+    uploadPortfolio () {
       const dataImage = this.$refs.myVueDropzone.getAcceptedFiles()
-      console.log(dataImage)
+      this.portfolio.imagePortfolio = dataImage[0]
+      this.portfolio.id = this.usersData.id
+      if (this.portfolio.imagePortfolio === null) {
+        this.$swal('Please insert Portfolio')
+      } else {
+        this.insertPortfolio(this.portfolio).then((response) => {
+          if (response === 'insert portfolio success') {
+            this.$swal('insert portfolio success')
+            this.portfolio.imagePortfolio = null
+            this.portfolio.namePortfolio = null
+            this.portfolio.linkRepository = null
+            this.portfolio.portfolioType = null
+          } else {
+            this.$swal(response)
+          }
+        })
+      }
     },
     addSkill () {
-      this.dataSkill.push(this.userSkill)
+      this.users.dataSkill.push(this.userSkill)
       this.userSkill = null
+    },
+    addExperience () {
+      console.log(this.experience)
+      const addExperience = {
+        positionExperience: null,
+        companyExperience: null,
+        yearsExperience: null,
+        descriptionExperience: null
+      }
+      this.experience.push(addExperience)
     },
     typePortfolio (value) {
       this.portfolioType = value
+    },
+    saveDataTalent () {
+      this.users.id = this.usersData.id
+      //   console.log(this.users)
+      this.updateUser(this.users).then(response => {
+        if (response === 'Update success') {
+          this.$swal('Update data success')
+          this.dataUser(this.usersData.id).then(result => {
+            const data1 = result
+            const skill1 = `${data1.skill}`
+            const skill2 = skill1.split(',')
+            data1.skill = skill2
+            this.users.fullnameApplicant = data1.name_user
+            this.users.jobdescApplicant = data1.job_desk
+            this.users.placeWorkApplicant = data1.workplace
+            this.users.domApplicant = data1.address
+            this.users.bioApplicant = data1.description
+            this.users.dataSkill = data1.skill
+          })
+        } else {
+          this.$swal(response)
+        }
+      })
     },
     saveDataRecruter () {
       console.log(this.company)
     }
   },
-  computed () {
-    console.log(this.company)
+  computed: {
+    ...mapGetters({
+      getDataUser: 'auth/getDetailUser'
+    })
+  },
+  mounted () {
+    this.dataUser(this.usersData.id).then(result => {
+      const data1 = result
+      const skill1 = `${data1.skill}`
+      const skill2 = skill1.split(',')
+      data1.skill = skill2
+      this.users.fullnameApplicant = data1.name_user
+      this.users.jobdescApplicant = data1.job_desk
+      this.users.placeWorkApplicant = data1.workplace
+      this.users.domApplicant = data1.address
+      this.users.bioApplicant = data1.description
+      this.users.dataSkill = data1.skill
+    })
   }
 }
 </script>
