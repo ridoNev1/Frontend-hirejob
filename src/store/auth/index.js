@@ -81,6 +81,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.get(`${url}/v1/user/${payload}`).then(result => {
         context.commit('SET_DETAIL_USER', result.data.data[0])
+        resolve(result.data.data[0])
         // console.log(result.data.data[0])
       }).catch(err => {
         console.log(err)
@@ -91,8 +92,47 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.get(`${url}/v1/portfolio/findone/${payload}`).then(result => {
         context.commit('SET_PORTFOLIO', result.data.data)
-        // console.log(result.data.data)
+        // console.log(result)
       }).catch(err => {
+        console.log(err)
+      })
+    })
+  },
+  updateProfileTalent (context, payload) {
+    return new Promise((resolve, reject) => {
+      const skill = payload.dataSkill
+      let skill2 = null
+      if (skill[0] === '...') {
+        skill.slice(1)
+        skill2 = skill
+      } else {
+        skill2 = skill
+      }
+      axios.patch(`${url}/v1/user/edit/${payload.id}`, {
+        name_user: payload.fullnameApplicant,
+        job_desk: payload.jobdescApplicant,
+        workplace: payload.placeWorkApplicant,
+        address: payload.domApplicant,
+        description: payload.bioApplicant,
+        skill: skill2.join(',')
+      }).then(result => {
+        resolve(result.data.message)
+      }).catch((err) => {
+        console.log(err)
+      })
+    })
+  },
+  addPortfolio (context, payload) {
+    return new Promise((resolve, reject) => {
+      const fd = new FormData()
+      fd.append('name_app', payload.namePortfolio)
+      fd.append('id_user', payload.id)
+      fd.append('type_portfolio', payload.portfolioType)
+      fd.append('image_port', payload.imagePortfolio)
+      fd.append('repository_link', payload.linkRepository)
+      axios.post(`${url}/v1/portfolio/insertone`, fd).then((result) => {
+        resolve(result.data.message)
+      }).catch((err) => {
         console.log(err)
       })
     })
