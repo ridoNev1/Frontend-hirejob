@@ -163,7 +163,10 @@ export default {
   },
   methods: {
     resPass () {
-      console.log(this.form.emailForgot)
+      this.actionReset(this.form)
+      // .then((result) => {
+      console.log(this.form)
+      // })
     },
     onLoginPelamar () {
       this.actionLogin(this.form)
@@ -189,7 +192,10 @@ export default {
       console.log(this.form.email)
       console.log(this.form.password)
     },
-    ...mapActions({ actionLogin: 'auth/login' }),
+    ...mapActions({
+      actionLogin: 'auth/login',
+      actionReset: 'auth/sendEmail'
+    }),
     showModal () {
       this.$refs['my-modal'].show()
     },

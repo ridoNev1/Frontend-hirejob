@@ -99,7 +99,15 @@ const actions = {
   },
   sendEmail (context, payload) {
     return new Promise((resolve, reject) => {
-      axios.post()
+      axios.post(`${url}/v1/user/reset-pass`, {
+        email: payload
+      })
+        .then(result => {
+          console.log(result)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     })
   }
 }
