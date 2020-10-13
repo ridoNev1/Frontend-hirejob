@@ -203,7 +203,7 @@ export default {
           .then((result) => {
             if (result === 'Please check your email to activation') {
               this.$swal('Please check your email to activation')
-              this.$router.push('/login')
+              this.$router.push('/loginrekrut')
             } else if (result === 'User Already exist') {
               this.$swal('Your email already exist!')
             }
