@@ -91,8 +91,8 @@
               <b-form-text class="mt-5">Nama</b-form-text>
               <b-input
                 type="text"
-                placeholder="Masukan nama panjang"
                 autofocus
+                placeholder="Masukan nama panjang"
                 class="mb-4"
                 v-model="form.nama"
               ></b-input>
@@ -107,7 +107,6 @@
               <b-input
                 type="text"
                 placeholder="Masukan nama perusahaan"
-                autofocus
                 class="mb-4"
                 v-model="form.company"
               ></b-input>
@@ -115,7 +114,6 @@
               <b-input
                 type="text"
                 placeholder="Posisi di perusahaan Anda"
-                autofocus
                 class="mb-4"
                 v-model="form.position"
               ></b-input>
@@ -144,7 +142,7 @@
             </b-form>
             <p class="mt-3" style="text-align: center">
               Anda sudah punya akun?
-              <router-link to="/login" style="color: #fbb017">
+              <router-link to="/loginrekrut" style="color: #fbb017">
                 Masuk disini
               </router-link>
             </p>
@@ -176,10 +174,18 @@ export default {
     onRegisLamar () {
       if (this.form.password2 !== this.form.password) {
         this.$swal('Password doesn\'t match')
+      } else if (this.form.nama === '' || this.form.email === '' || this.form.handphone === '' || this.form.password === '' || this.form.password2 === '') {
+        this.$swal('Data cannot be empty!')
       } else {
         this.onSignUp(this.form)
           .then((result) => {
-            console.log(result)
+            if (result === 'Please check your email to activation') {
+              this.$swal('Please check your email to activation')
+            } else if (result === 'User Already exist') {
+              this.$swal('Your email already exist!')
+            } else {
+              this.$router.push('/login')
+            }
           })
           .catch((err) => {
             console.log(err)
@@ -187,13 +193,25 @@ export default {
       }
     },
     onRegisRekrut () {
-      console.log(this.form.nama)
-      console.log(this.form.email)
-      console.log(this.form.handphone)
-      console.log(this.form.password)
-      console.log(this.form.password2)
-      console.log(this.form.position)
-      console.log(this.form.company)
+      if (this.form.password2 !== this.form.password) {
+        this.$swal('Password doesn\'t match')
+      } else if (this.form.company === '' || this.form.position === '' || this.form.nama === '' || this.form.email === '' || this.form.handphone === '' || this.form.password === '' || this.form.password2 === '') {
+        this.$swal('Data cannot be empty!')
+      } else {
+        this.onSignUp(this.form)
+          .then((result) => {
+            if (result === 'Please check your email to activation') {
+              this.$swal('Please check your email to activation')
+            } else if (result === 'User Already exist') {
+              this.$swal('Your email already exist!')
+            } else {
+              this.$router.push('/login')
+            }
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
     },
     ...mapActions({ onSignUp: 'auth/register' })
   },
