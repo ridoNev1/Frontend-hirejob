@@ -200,6 +200,22 @@ const actions = {
         console.log(err)
       })
     })
+  },
+  resetPass (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios.post(`${url}/v1/user/reset-confirm`, {
+        password: payload.password,
+        confirmpwd: payload.password2,
+        key: payload.key
+      })
+        .then((result) => {
+          resolve(result.data.message)
+          console.log(result.data.message)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    })
   }
 }
 export default {
