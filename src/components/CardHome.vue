@@ -11,10 +11,10 @@
           <img src="../assets/img/map-pin (4) 1.svg" class="map" />
           {{item.address}}
         </b-card-text>
-        <div class="skill d-flex justify-content-start">
-          <button class="btn text-white mx-2">{{item.skill}}</button>
-          <button class="btn text-white mx-2">Javascript</button>
-          <button class="btn text-white mx-2">Jav</button>
+        <div class="skill d-flex justify-content-start" v-for="(item2, index) in item.skill" :key="index">
+          <button class="btn text-white mx-2">{{item2}}</button>
+          <!-- <button class="btn text-white mx-2">Javascript</button>
+          <button class="btn text-white mx-2">Jav</button> -->
         </div>
       </b-card>
     </div>
