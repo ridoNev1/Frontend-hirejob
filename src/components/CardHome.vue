@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="my-2 card-page">
-      <b-card class="card-home" v-for="(item, index) in allUsers" :key="index">
+      <b-card class="card-home" v-for="(item, index) in allUsers" :key="index" @click="seeProfile(item)">
         <div class="img-card" :style="`background-image: url(http://54.160.81.6:3002/${item.image});`">
           <span class="img"></span>
         </div>
@@ -15,7 +15,7 @@
           <div v-for="(item2, index1) in skillsData.data[index]" :key="index1">
             <button class="btn text-white" style="text-overflow: clip;">{{item2}}</button>
           </div>
-          <p>8+</p>
+          <p class="ml-2 font-weight-bold text-secondary p-1" style="border-radius: 5px; background-color: #f6f7f8;">{{skillsData.total[index]}} +</p>
         </div>
       </b-card>
     </div>
@@ -35,7 +35,10 @@ export default {
   methods: {
     ...mapActions({
       getDataUser: 'auth/getAllUser'
-    })
+    }),
+    seeProfile (value) {
+      localStorage.setItem('userapplicant', JSON.stringify(value))
+    }
   },
   mounted () {
     this.getDataUser()
@@ -50,14 +53,11 @@ export default {
   box-sizing: border-box;
   border-radius: 4px;
   height: 100%;
+  margin-right: 10px;
 }
 
 .skill-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 40px;
-  justify-items: center;
-  gap: 10px;
+  display: flex;
   width: 100%;
 }
 

@@ -38,7 +38,7 @@ const getters = {
   getAllSkills (state) {
     const dataSkill = state.getSkills
     const newData = dataSkill.map(e => {
-      return e.skill.split(',').slice(0, 3)
+      return e.skill.split(',').slice(0, 2)
     })
     const totalData = dataSkill.map(e => {
       return e.skill.split(',').length
