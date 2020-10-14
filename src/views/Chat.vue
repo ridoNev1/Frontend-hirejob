@@ -70,7 +70,7 @@
         </div>
       </div>
     </div>
-    {{privateChat}}
+    {{userData}}
   </div>
 </template>
 
@@ -78,6 +78,7 @@
 import Navbar from '../components/Navbar'
 import io from 'socket.io-client'
 import { url } from '../helper/env'
+import { mapActions } from 'vuex'
 
 export default {
   components: {
@@ -123,19 +124,25 @@ export default {
         }
       })
       this.privateChat = privateChats
-    }
+    },
+    ...mapActions({
+      getFriends: 'auth/getFriend'
+    })
   },
   mounted () {
-    this.socket.emit('get-friends', this.userData.id)
-    this.socket.on('userList', (payload) => {
-      this.listFriend = payload
-    })
+    // this.socket.emit('get-friends', this.userData)
+    // this.socket.on('userList', (payload) => {
+    //   this.listFriend = payload
+    // })
     this.socket.emit('join-room', this.userData.email)
     this.socket.on('list-message', (payload) => {
       this.roomChat = [...this.roomChat, payload]
       if (this.dataApplicant !== null) {
         this.setPrivateChat()
       }
+    })
+    this.getFriends(this.userData.id).then(result => {
+      this.listFriend = result
     })
   }
 }

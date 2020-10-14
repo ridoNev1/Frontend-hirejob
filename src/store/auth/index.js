@@ -284,6 +284,15 @@ const actions = {
         console.log(err)
       })
     })
+  },
+  getFriend (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios.get(`${url}/v1/chat/friends/${payload}`).then(result => {
+        resolve(result.data.data)
+      }).catch(err => {
+        console.log(err)
+      })
+    })
   }
 }
 export default {
