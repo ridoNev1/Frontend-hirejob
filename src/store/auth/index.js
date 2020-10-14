@@ -119,7 +119,6 @@ const actions = {
       axios.get(`${url}/v1/user/${payload}`).then(result => {
         context.commit('SET_DETAIL_USER', result.data.data[0])
         resolve(result.data.data[0])
-        console.log(result)
       }).catch(err => {
         console.log(err)
       })
@@ -129,7 +128,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.get(`${url}/v1/portfolio/findone/${payload}`).then(result => {
         context.commit('SET_PORTFOLIO', result.data.data)
-        // console.log(result)
       }).catch(err => {
         console.log(err)
       })
@@ -239,6 +237,16 @@ const actions = {
         context.commit('SET_EXPERIENCE', result.data.data)
       }).catch((err) => {
         console.log(err)
+      })
+    })
+  },
+  deleteExperience (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios.delete(`${url}/v1/experience/delete/${payload}`).then((response) => {
+        resolve(response)
+        console.log(response)
+      }).catch((err) => {
+        reject(err)
       })
     })
   },
