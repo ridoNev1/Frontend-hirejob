@@ -43,4 +43,9 @@
   background: #5e50a1;
   padding: 40px 100px 10px 100px;
 }
+@media only screen and (max-width: 400px) {
+  .footerCom {
+    display: none;
+  }
+}
 </style>

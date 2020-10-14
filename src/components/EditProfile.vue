@@ -11,7 +11,7 @@
               <b-col lg="12" class="my-3">
                 <button
                   class="btn btn-save"
-                  type="profilerecrut"
+                  type="profile"
                   @click="saveDataTalent()"
                 >
                   Simpan
@@ -623,11 +623,30 @@ export default {
       })
     },
     saveDataRecruter () {
-      console.log(this.company)
+      this.company.id = this.usersData.id
+      this.updateRecruter(this.company).then((response) => {
+        if (response === 'Update success') {
+          this.$swal('Update Data Success')
+          this.dataUser(this.usersData.id).then((result) => {
+            const data1 = result
+            this.company.nameCompanyRecruter = data1.workplace
+            this.company.typeCompanyRecruter = data1.job_type
+            this.company.cityCompanyRecruter = data1.address
+            this.company.recruterDescription = data1.description
+            this.company.emailRecruterCompany = data1.s_email
+            this.company.instagramRecruterCompany = data1.s_instagram
+            this.company.phoneRecruterCompany = data1.no_hp
+            this.company.linkedinRecruterCompany = data1.s_linkedin
+          })
+        } else {
+          this.$swal(response)
+        }
+      })
     },
     ...mapActions({
       dataUser: 'auth/getOneUser',
       updateUser: 'auth/updateProfileTalent',
+      updateRecruter: 'auth/updateProfileRecruter',
       insertPortfolio: 'auth/addPortfolio',
       getExperience: 'auth/getExperience',
       insertExperience: 'auth/insertExperience'
@@ -651,6 +670,14 @@ export default {
       this.users.domApplicant = data1.address
       this.users.bioApplicant = data1.description
       this.users.dataSkill = data1.skill
+      this.company.nameCompanyRecruter = data1.workplace
+      this.company.typeCompanyRecruter = data1.job_type
+      this.company.cityCompanyRecruter = data1.address
+      this.company.recruterDescription = data1.description
+      this.company.emailRecruterCompany = data1.s_email
+      this.company.instagramRecruterCompany = data1.s_instagram
+      this.company.phoneRecruterCompany = data1.no_hp
+      this.company.linkedinRecruterCompany = data1.s_linkedin
     })
     this.getExperience(this.usersData.id)
   }

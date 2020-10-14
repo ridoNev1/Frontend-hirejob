@@ -160,6 +160,24 @@ const actions = {
       })
     })
   },
+  updateProfileRecruter (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios.patch(`${url}/v1/user/edit/${payload.id}`, {
+        workplace: payload.nameCompanyRecruter,
+        job_type: payload.typeCompanyRecruter,
+        address: payload.cityCompanyRecruter,
+        description: payload.recruterDescription,
+        s_email: payload.emailRecruterCompany,
+        s_instagram: payload.instagramRecruterCompany,
+        no_hp: payload.phoneRecruterCompany,
+        s_linkedin: payload.linkedinRecruterCompany
+      }).then(result => {
+        resolve(result.data.message)
+      }).catch((err) => {
+        console.log(err)
+      })
+    })
+  },
   addPortfolio (context, payload) {
     return new Promise((resolve, reject) => {
       const fd = new FormData()
@@ -202,7 +220,7 @@ const actions = {
   getExperience (context, payload) {
     return new Promise((resolve, reject) => {
       axios.get(`${url}/v1/experience/getexperience/${payload}`).then((result) => {
-        console.log(result)
+        // console.log(result)
         context.commit('SET_EXPERIENCE', result.data.data)
       }).catch((err) => {
         console.log(err)
