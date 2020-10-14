@@ -162,12 +162,13 @@ export default {
     border-radius: 4px;
     text-align: center;
     margin-bottom: 0;
+    width: fit-content;
+    margin-right: 10px;
 }
 .skill-list-box {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(40px, 120px));
-    justify-content: start;
-    gap: 15px;
+    display: flex;
+    /* justify-content: start;
+    gap: 15px; */
 }
 
 .bio-user {

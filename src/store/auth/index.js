@@ -119,7 +119,7 @@ const actions = {
       axios.get(`${url}/v1/user/${payload}`).then(result => {
         context.commit('SET_DETAIL_USER', result.data.data[0])
         resolve(result.data.data[0])
-        // console.log(result.data.data[0])
+        console.log(result)
       }).catch(err => {
         console.log(err)
       })
@@ -238,6 +238,15 @@ const actions = {
         .catch((err) => {
           console.log(err)
         })
+    })
+  },
+  newFriend (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios.post(`${url}/v1/chat/addfriends`, payload).then(result => {
+        console.log(result)
+      }).catch(err => {
+        console.log(err)
+      })
     })
   }
 }

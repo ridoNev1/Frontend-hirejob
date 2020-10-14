@@ -52,9 +52,24 @@
 
 <script>
 import Navbar from '../components/Navbar'
+import io from 'socket.io-client'
+import { url } from '../helper/env'
+
 export default {
   components: {
     Navbar
+  },
+  data () {
+    return {
+      socket: io(`${url}`),
+      userData: localStorage.getItem('datauser')
+    }
+  },
+  mounted () {
+    this.socket.emit('get-friends', this.userData.id)
+    this.socket.on('userList', (payload) => {
+      console.log(payload)
+    })
   }
 }
 </script>

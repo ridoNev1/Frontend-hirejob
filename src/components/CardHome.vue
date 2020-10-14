@@ -6,8 +6,8 @@
           <span class="img"></span>
         </div>
         <b-card-text class="mt-3">
-          <h3>{{item.name_user}}</h3>
-          <p class="job-desk">{{item.job_desk}}</p>
+          <h4 class="font-weight-bold">{{item.name_user}}</h4>
+          <p class="job-desk text-secondary">{{item.job_desk}}</p>
           <img src="../assets/img/map-pin (4) 1.svg" class="map" />
           {{item.address}}
         </b-card-text>
@@ -72,6 +72,7 @@ export default {
   height: 100px;
   background-size: cover;
   margin-left: 10px;
+  border-radius: 10px;
 }
 .card-home:hover {
   opacity: 0.7;
