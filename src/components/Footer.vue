@@ -43,9 +43,19 @@
   background: #5e50a1;
   padding: 40px 100px 10px 100px;
 }
-@media only screen and (max-width: 400px) {
+@media screen and (max-width: 1055px){
   .footerCom {
-    display: none;
+    /* display: none; */
+    padding: 0;
+    margin: 0;
   }
+  .texFooter{
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    /* width: 100%; */
+    /* padding-right: 75%; */
+    margin-bottom: 30px;
+}
 }
 </style>

@@ -7,16 +7,19 @@
         </div>
         <b-card-text class="mt-3">
           <h4 class="font-weight-bold">{{item.name_user}}</h4>
-          <p class="job-desk text-secondary">{{item.job_desk}}</p>
+          <div>
+            <p class="job-desk text-secondary" v-if="item.job_desk === null">No Data</p>
+            <p class="job-desk text-secondary" v-else>{{item.job_desk}}</p>
+          </div>
           <img src="../assets/img/map-pin (4) 1.svg" class="map" />
           {{item.address}}
         </b-card-text>
         <div class="skill-list">
           <div v-for="(item2, index1) in skillsData.data[index]" :key="index1">
-            <button class="btn text-white" style="text-overflow: clip;">{{item2}}</button>
+            <button class="btn text-white">{{item2}}</button>
           </div>
-          <p class="ml-2 font-weight-bold text-secondary p-1" style="border-radius: 5px; background-color: #f6f7f8;">{{skillsData.total[index]}} +</p>
         </div>
+        <p class="ml-2 font-weight-bold text-secondary p-1" style="border-radius: 5px; background-color: #f6f7f8; float: right; margin-top: -35px;">{{skillsData.total[index]}} +</p>
       </b-card>
     </div>
   </div>
@@ -38,10 +41,16 @@ export default {
     }),
     seeProfile (value) {
       localStorage.setItem('userapplicant', JSON.stringify(value))
+      this.$router.push({ path: '/portofolio', query: { id: value.id_user } })
     }
   },
   mounted () {
-    this.getDataUser()
+    const data = {
+      search: '',
+      sort: '',
+      page: 1
+    }
+    this.getDataUser(data)
     console.log(this.allUsers)
   }
 }

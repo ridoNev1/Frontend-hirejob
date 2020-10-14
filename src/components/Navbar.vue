@@ -23,9 +23,11 @@
               </div>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="/portofolio">Profile</a>
-              <a class="dropdown-item" href="/home">Home</a>
-              <a class="dropdown-item" href="/login" @click="logOut">Logout</a>
+              <router-link to="/home" class="dropdown-item">Home</router-link>
+              <div>
+                <button class="dropdown-item" @click="sendId">Profile</button>
+              </div>
+              <button class="dropdown-item" @click="logOut">Logout</button>
             </div>
           </div>
         </div>
@@ -47,7 +49,7 @@ export default {
   data () {
     return {
       token: localStorage.getItem('token'),
-      userData: localStorage.getItem('datauser')
+      userData: JSON.parse(localStorage.getItem('datauser'))
     }
   },
   methods: {
@@ -55,6 +57,10 @@ export default {
       localStorage.removeItem('token')
       localStorage.removeItem('datauser')
       localStorage.removeItem('userapplicant')
+      window.location = '/'
+    },
+    sendId () {
+      this.$router.push({ path: '/portofolio', query: { id: this.userData.id } })
     }
   }
 }

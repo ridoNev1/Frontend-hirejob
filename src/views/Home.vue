@@ -2,21 +2,21 @@
 <div>
     <Navbar />
      <b-col lg="12" class="top-jobs px-5 py-1">
-                    <h1 class="text-white px-5">Top Jobs</h1>
+                    <h2 class="text-white px-5 font-weight-bold">Top Jobs</h2>
                 </b-col>
     <div class="container-fluid">
         <div>
         <b-col lg="12">
-            <b-row >
+            <b-row class="no-gutters">
                 <b-col lg="12" class="my-5">
                     <div class="search">
-                        <form class="form">
-                            <input type="text" placeholder="Search any skill">
+                        <form class="form" @keyup.prevent="onSearch">
+                            <input type="text" placeholder="Search any skill" v-model="searchData">
                             <div style="margin-top: -2px;">
-                                <b-dropdown  id="dropdown-left" text="Category" variant="transparent" class="category m-2">
-                                    <b-dropdown-item href="#">Action</b-dropdown-item>
-                                    <b-dropdown-item href="#">Another action</b-dropdown-item>
-                                    <b-dropdown-item href="#">Something else here</b-dropdown-item>
+                                <b-dropdown  id="dropdown-left" text="Sort" variant="transparent" class="category m-2">
+                                    <b-dropdown-item @click="sortType('skill')">Skill</b-dropdown-item>
+                                    <b-dropdown-item @click="sortType('name_user')">Name</b-dropdown-item>
+                                    <b-dropdown-item @click="sortType('address')">Location</b-dropdown-item>
                                 </b-dropdown>
                             </div>
                             <button type="submit" class="btn searchButton">Search</button>
@@ -52,12 +52,43 @@
 import Navbar from '../components/Navbar'
 import CardHome from '../components/CardHome'
 import Footer from '../components/Footer'
+import { mapActions } from 'vuex'
 
 export default {
   components: {
     Navbar,
     CardHome,
     Footer
+  },
+  data () {
+    return {
+      searchData: '',
+      dataSort: null
+    }
+  },
+  methods: {
+    ...mapActions({
+      getDataUser: 'auth/getAllUser'
+    }),
+    onSearch () {
+      const data = {
+        search: this.searchData,
+        sort: this.dataSort,
+        page: 1
+      }
+      this.getDataUser(data)
+    //   this.$router.push({ path: '/home', query: { search: this.searchData, page: this.page } })
+    },
+    sortType (value) {
+      this.dataSort = value
+      const data = {
+        search: this.searchData,
+        sort: this.dataSort,
+        page: 1
+      }
+      this.getDataUser(data)
+    //   this.$router.push({ path: '/home', query: { search: this.searchData, page: this.page, sort: this.dataSort } })
+    }
   }
 }
 </script>

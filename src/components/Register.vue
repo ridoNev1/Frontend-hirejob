@@ -4,6 +4,7 @@
       <b-row class="no-gutters">
         <b-col lg="6">
           <img class="logo" src="../assets/img/exam.svg" alt="" />
+          <img class="logoungu" src="../assets/img/peworldpur.svg" alt="" />
           <div class="divImage">
           <div class="tinted-image"></div>
           <div class="bannerText"><h3>Temukan developer berbakat & terbaik di berbagai bidang keahlian</h3></div>
@@ -11,8 +12,8 @@
         </b-col>
         <b-col lg="6">
           <div class="divForm">
-            <h2 class="textHello">Halo, Pewpeople</h2>
-            <h2 class="textLogin">Signup</h2>
+            <h2 class="textHello">Hello, Jobseeker</h2>
+            <h4 class="textLogin">Signup as Jobseeker</h4>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
               atque itaque eos ullam aut, nam provident assumenda iste ex
@@ -72,6 +73,7 @@
         <b-row class="no-gutters">
         <b-col lg="6">
           <img class="logo" src="../assets/img/exam.svg" alt="" />
+          <img class="logoungu" src="../assets/img/peworldpur.svg" alt="" />
           <div class="divImage">
           <div class="tinted-image"></div>
           <div class="bannerText"><h3>Temukan developer berbakat & terbaik di berbagai bidang keahlian</h3></div>
@@ -79,8 +81,8 @@
         </b-col>
         <b-col lg="6">
           <div class="divForm">
-            <h2 class="textHello">Halo, Pewpeople</h2>
-            <h2 class="textLogin">Signup</h2>
+            <h2 class="textHello">Hello, Recruiter</h2>
+            <h4 class="textLogin">Signup as Recruiter</h4>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
               atque itaque eos ullam aut, nam provident assumenda iste ex
@@ -220,6 +222,9 @@ export default {
 </script>
 
 <style scoped>
+.logoungu {
+  display: none;
+}
 .tinted-image {
   width: 90%;
   height: 90vh;
@@ -264,7 +269,7 @@ button:hover {
     display: none;
   }
   .logo {
-    position: relative;
+    position: none;
     margin-left: 0px;
   }
   .divForm {
@@ -274,6 +279,9 @@ button:hover {
     display: none;
   }
   .textLogin {
+    display: inline;
+  }
+  .logoungu{
     display: inline;
   }
 }
