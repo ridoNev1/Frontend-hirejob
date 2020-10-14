@@ -11,10 +11,11 @@
           <img src="../assets/img/map-pin (4) 1.svg" class="map" />
           {{item.address}}
         </b-card-text>
-        <div class="skill d-flex justify-content-start" v-for="(item2, index) in item.skill" :key="index">
-          <button class="btn text-white mx-2">{{item2}}</button>
-          <!-- <button class="btn text-white mx-2">Javascript</button>
-          <button class="btn text-white mx-2">Jav</button> -->
+        <div class="skill-list">
+          <div v-for="(item2, index1) in skillsData.data[index]" :key="index1">
+            <button class="btn text-white" style="text-overflow: clip;">{{item2}}</button>
+          </div>
+          <p>8+</p>
         </div>
       </b-card>
     </div>
@@ -27,7 +28,8 @@ export default {
   name: 'CardUser',
   computed: {
     ...mapGetters({
-      allUsers: 'auth/getAllUser'
+      allUsers: 'auth/getAllUser',
+      skillsData: 'auth/getAllSkills'
     })
   },
   methods: {
@@ -42,15 +44,23 @@ export default {
 </script>
 
 <style scoped>
-.skill .btn {
+.skill-list .btn {
   background: rgba(251, 176, 23, 0.6);
   border: 1px solid #fbb017;
   box-sizing: border-box;
   border-radius: 4px;
+  height: 100%;
 }
-.skill {
-  overflow-x: hidden;
+
+.skill-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 40px;
+  justify-items: center;
+  gap: 10px;
+  width: 100%;
 }
+
 .card-home {
   background: #ffffff;
   border-radius: 4px;
