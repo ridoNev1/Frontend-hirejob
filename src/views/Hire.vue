@@ -67,7 +67,6 @@
         </b-col>
       </b-row>
     </div>
-    {{dataApplicant}}
     <Footer />
   </div>
 </template>
@@ -76,6 +75,10 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import UserCard from '../components/UserCard'
+import io from 'socket.io-client'
+import { url } from '../helper/env'
+import { mapActions } from 'vuex'
+
 export default {
   components: {
     Navbar,
@@ -90,10 +93,14 @@ export default {
       noHp: null,
       chatContent: null,
       dataApplicant: JSON.parse(localStorage.getItem('userapplicant')),
-      dataUser: JSON.parse(localStorage.getItem('datauser'))
+      dataUser: JSON.parse(localStorage.getItem('datauser')),
+      socket: io(`${url}`)
     }
   },
   methods: {
+    ...mapActions({
+      insertFriend: 'auth/newFriend'
+    }),
     onHire () {
       const form = {
         Position: this.projectPoint,
@@ -102,8 +109,25 @@ export default {
         hp: this.noHp,
         chat: this.chatContent
       }
-      console.log(form)
+      const data = {
+        type_chat: 2,
+        sender: this.dataUser.email,
+        receiver: this.dataApplicant.email,
+        message: JSON.stringify(form)
+      }
+      this.socket.emit('send-message-hire', data)
+      const datafriend = {
+        id_user: this.dataUser.id,
+        id_friend: this.dataApplicant.id_user
+      }
+      this.insertFriend(datafriend)
     }
+  },
+  mounted () {
+    this.socket.on('res-hire', (payload) => {
+      this.$swal('success hire talent')
+      this.$router.push('/chat')
+    })
   }
 }
 </script>
