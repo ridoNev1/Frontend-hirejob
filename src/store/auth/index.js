@@ -119,7 +119,6 @@ const actions = {
       axios.get(`${url}/v1/user/${payload}`).then(result => {
         context.commit('SET_DETAIL_USER', result.data.data[0])
         resolve(result.data.data[0])
-        console.log(result)
       }).catch(err => {
         console.log(err)
       })
@@ -129,7 +128,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.get(`${url}/v1/portfolio/findone/${payload}`).then(result => {
         context.commit('SET_PORTFOLIO', result.data.data)
-        // console.log(result)
       }).catch(err => {
         console.log(err)
       })
@@ -153,6 +151,24 @@ const actions = {
         address: payload.domApplicant,
         description: payload.bioApplicant,
         skill: skill2.join(',')
+      }).then(result => {
+        resolve(result.data.message)
+      }).catch((err) => {
+        console.log(err)
+      })
+    })
+  },
+  updateProfileRecruter (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios.patch(`${url}/v1/user/edit/${payload.id}`, {
+        workplace: payload.nameCompanyRecruter,
+        job_type: payload.typeCompanyRecruter,
+        address: payload.cityCompanyRecruter,
+        description: payload.recruterDescription,
+        s_email: payload.emailRecruterCompany,
+        s_instagram: payload.instagramRecruterCompany,
+        no_hp: payload.phoneRecruterCompany,
+        s_linkedin: payload.linkedinRecruterCompany
       }).then(result => {
         resolve(result.data.message)
       }).catch((err) => {
@@ -202,7 +218,7 @@ const actions = {
   getExperience (context, payload) {
     return new Promise((resolve, reject) => {
       axios.get(`${url}/v1/experience/getexperience/${payload}`).then((result) => {
-        console.log(result)
+        // console.log(result)
         context.commit('SET_EXPERIENCE', result.data.data)
       }).catch((err) => {
         console.log(err)
@@ -221,6 +237,16 @@ const actions = {
         context.commit('SET_EXPERIENCE', result.data.data)
       }).catch((err) => {
         console.log(err)
+      })
+    })
+  },
+  deleteExperience (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios.delete(`${url}/v1/experience/delete/${payload}`).then((response) => {
+        resolve(response)
+        console.log(response)
+      }).catch((err) => {
+        reject(err)
       })
     })
   },
