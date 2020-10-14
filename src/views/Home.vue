@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div>
         <b-col lg="12">
-            <b-row >
+            <b-row class="no-gutters">
                 <b-col lg="12" class="my-5">
                     <div class="search">
                         <form class="form">
