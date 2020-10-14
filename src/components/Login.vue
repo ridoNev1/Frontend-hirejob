@@ -172,7 +172,7 @@ export default {
               this.$swal('Email invalid. Please sign up!')
             } else if (result === 'Check your email to reset password') {
               this.$swal('Check your email to reset password')
-              this.$router.push('/')
+              window.location = '/'
             }
           })
       }
@@ -193,7 +193,7 @@ export default {
               this.$swal('Check your email activation!!')
               localStorage.removeItem('token')
             } else {
-              this.$router.push('/')
+              window.location = '/'
             }
           })
           .catch((err) => {
@@ -217,7 +217,7 @@ export default {
               this.$swal('Check your email activation!!')
               localStorage.removeItem('token')
             } else {
-              this.$router.push('/')
+              window.location = '/'
             }
           })
           .catch((err) => {

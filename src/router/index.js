@@ -11,6 +11,7 @@ import Chat from '../views/Chat.vue'
 import ProfileRecrut from '../views/ProfileRecrut'
 import Company from '../views/Company.vue'
 import Forgot from '../views/Forgot.vue'
+import talentPreview from '../views/talentPreview'
 
 import Home from '../views/Home.vue'
 
@@ -91,6 +92,12 @@ const routes = [
     path: '/chat',
     name: 'Chat',
     component: Chat,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/talentpreview',
+    name: 'talentPreview',
+    component: talentPreview,
     meta: { requiresAuth: true }
   }
 ]

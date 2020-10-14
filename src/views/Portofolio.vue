@@ -73,7 +73,8 @@ export default {
     return {
       switchToggle: 0,
       switchContent: 0,
-      dataUser: JSON.parse(localStorage.getItem('datauser'))
+      dataUser: JSON.parse(localStorage.getItem('datauser')),
+      id: this.$route.query.id
     }
   },
   computed: {
@@ -120,8 +121,8 @@ export default {
     const tgl1 = document.querySelector('.switch-toggle')
     tgl1.classList.toggle('switch-nav2')
     this.switchToggle = 1
-    this.getDetailUser(this.dataUser.id)
-    this.getPortfolio(this.dataUser.id)
+    this.getDetailUser(this.id)
+    this.getPortfolio(this.id)
   }
 }
 </script>

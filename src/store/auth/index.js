@@ -182,7 +182,7 @@ const actions = {
       })
         .then(result => {
           resolve(result.data.message)
-          console.log(result.data.message)
+          // console.log(result.data.message)
         })
         .catch(err => {
           console.log(err)
@@ -191,7 +191,7 @@ const actions = {
   },
   getAllUser (context, payload) {
     return new Promise((resolve, reject) => {
-      axios.get(`${url}/v1/user`).then(result => {
+      axios.get(`${url}/v1/user?search=${payload.search}&page=${payload.page}&sortBy=${payload.sort}`).then(result => {
         context.commit('SET_ALL_USERS', result.data.data)
         context.commit('SET_SKILLS', result.data.data)
       }).catch(err => {
@@ -233,7 +233,7 @@ const actions = {
       })
         .then((result) => {
           resolve(result.data.message)
-          console.log(result.data.message)
+          // console.log(result.data.message)
         })
         .catch((err) => {
           console.log(err)
