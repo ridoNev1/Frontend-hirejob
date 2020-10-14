@@ -108,6 +108,7 @@ export default {
         receiver: this.dataApplicant,
         message: this.chat
       }
+      this.roomChat = [...this.roomChat, data]
       // console.log(data)
       this.socket.emit('send-message', data)
       this.chat = ''
