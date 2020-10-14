@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="my-2 card-page">
-      <b-card class="card-home" v-for="(item, index) in allUsers" :key="index">
+      <b-card class="card-home" v-for="(item, index) in allUsers" :key="index" @click="seeProfile(item)">
         <div class="img-card" :style="`background-image: url(http://54.160.81.6:3002/${item.image});`">
           <span class="img"></span>
         </div>
@@ -11,10 +11,11 @@
           <img src="../assets/img/map-pin (4) 1.svg" class="map" />
           {{item.address}}
         </b-card-text>
-        <div class="skill d-flex justify-content-start" v-for="(item2, index) in item.skill" :key="index">
-          <button class="btn text-white mx-2">{{item2}}</button>
-          <!-- <button class="btn text-white mx-2">Javascript</button>
-          <button class="btn text-white mx-2">Jav</button> -->
+        <div class="skill-list">
+          <div v-for="(item2, index1) in skillsData.data[index]" :key="index1">
+            <button class="btn text-white" style="text-overflow: clip;">{{item2}}</button>
+          </div>
+          <p class="ml-2 font-weight-bold text-secondary p-1" style="border-radius: 5px; background-color: #f6f7f8;">{{skillsData.total[index]}} +</p>
         </div>
       </b-card>
     </div>
@@ -27,13 +28,17 @@ export default {
   name: 'CardUser',
   computed: {
     ...mapGetters({
-      allUsers: 'auth/getAllUser'
+      allUsers: 'auth/getAllUser',
+      skillsData: 'auth/getAllSkills'
     })
   },
   methods: {
     ...mapActions({
       getDataUser: 'auth/getAllUser'
-    })
+    }),
+    seeProfile (value) {
+      localStorage.setItem('userapplicant', JSON.stringify(value))
+    }
   },
   mounted () {
     this.getDataUser()
@@ -43,15 +48,20 @@ export default {
 </script>
 
 <style scoped>
-.skill .btn {
+.skill-list .btn {
   background: rgba(251, 176, 23, 0.6);
   border: 1px solid #fbb017;
   box-sizing: border-box;
   border-radius: 4px;
+  height: 100%;
+  margin-right: 10px;
 }
-.skill {
-  overflow-x: hidden;
+
+.skill-list {
+  display: flex;
+  width: 100%;
 }
+
 .card-home {
   background: #ffffff;
   border-radius: 4px;
