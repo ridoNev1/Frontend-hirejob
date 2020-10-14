@@ -46,27 +46,46 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 // import { mapActions } from 'vuex'
 export default {
   data () {
     return {
       form: {
         password: '',
-        password2: ''
+        password2: '',
+        key: this.$route.query.key
       }
     }
   },
   methods: {
     onResetPassword () {
-      console.log(this.form.password)
-      console.log(this.form.password2)
+      if (this.form.password !== this.form.password2) {
+        this.$swal('Password doesn\'t match!')
+      } else if (this.form.password2 === '' || this.form.password === 'null') {
+        this.$swal('Fill the password!')
+      } else {
+        this.actionReset(this.form)
+          .then((result) => {
+            if (result === 'success reset password') {
+              this.$swal('Success Reset Password')
+              this.$router.push('/login')
+            }
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
     },
     showModal () {
       this.$refs['my-modal'].show()
     },
     hideModal () {
       this.$refs['my-modal'].hide()
-    }
+    },
+    ...mapActions({
+      actionReset: 'auth/resetPass'
+    })
   },
   props: ['type']
 }

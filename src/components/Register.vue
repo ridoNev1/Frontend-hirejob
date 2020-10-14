@@ -181,10 +181,9 @@ export default {
           .then((result) => {
             if (result === 'Please check your email to activation') {
               this.$swal('Please check your email to activation')
+              this.$router.push('/login')
             } else if (result === 'User Already exist') {
               this.$swal('Your email already exist!')
-            } else {
-              this.$router.push('/login')
             }
           })
           .catch((err) => {
@@ -193,19 +192,20 @@ export default {
       }
     },
     onRegisRekrut () {
+      this.form.role = 1
       if (this.form.password2 !== this.form.password) {
         this.$swal('Password doesn\'t match')
       } else if (this.form.company === '' || this.form.position === '' || this.form.nama === '' || this.form.email === '' || this.form.handphone === '' || this.form.password === '' || this.form.password2 === '') {
         this.$swal('Data cannot be empty!')
       } else {
+        console.log(this.form)
         this.onSignUp(this.form)
           .then((result) => {
             if (result === 'Please check your email to activation') {
               this.$swal('Please check your email to activation')
+              this.$router.push('/loginrekrut')
             } else if (result === 'User Already exist') {
               this.$swal('Your email already exist!')
-            } else {
-              this.$router.push('/login')
             }
           })
           .catch((err) => {
