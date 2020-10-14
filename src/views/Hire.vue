@@ -8,8 +8,8 @@
         </b-col>
         <b-col lg="7" class="mt-3 formSize">
           <div class="divHire">
-            <h2 style="font-weight: bold">Hubungi Jokowi</h2>
-            <p>Plih saya lagi yuk</p>
+            <h2 style="font-weight: bold">Hubungi {{dataApplicant.name_user}}</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, voluptatibus?</p>
 
             <b-form @submit.prevent="onHire()">
               <b-form-text>Tujuan tentang posisi ini</b-form-text>
@@ -67,6 +67,7 @@
         </b-col>
       </b-row>
     </div>
+    {{dataApplicant}}
     <Footer />
   </div>
 </template>
@@ -87,7 +88,9 @@ export default {
       email: null,
       user: null,
       noHp: null,
-      chatContent: null
+      chatContent: null,
+      dataApplicant: JSON.parse(localStorage.getItem('userapplicant')),
+      dataUser: JSON.parse(localStorage.getItem('datauser'))
     }
   },
   methods: {
