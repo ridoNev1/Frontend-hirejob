@@ -234,9 +234,19 @@ const actions = {
         id_users: payload.id,
         id_company_exp: payload.companyExperience
       }).then((result) => {
-        context.commit('SET_EXPERIENCE', result.data.data)
+        // context.commit('SET_EXPERIENCE', result.data.data)
+        resolve(result)
       }).catch((err) => {
         console.log(err)
+      })
+    })
+  },
+  updateExperience (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios.patch(`${url}/v1/experience/update/${payload.id_experience}`, payload).then((response) => {
+        resolve(response)
+      }).catch((err) => {
+        reject(err)
       })
     })
   },

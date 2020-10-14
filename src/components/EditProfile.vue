@@ -138,12 +138,12 @@
                     >
                       <b-col lg="12">
                         <b-row>
-                          <b-col lg="10">
-                            <h1 class="px-2 py-3" style="font-size: 25px">
+                          <b-col lg="10" cols="10">
+                            <h1 class="title-exp px-2 py-3">
                               Pengalaman Kerja
                             </h1>
                           </b-col>
-                          <b-col lg="2">
+                          <b-col lg="2" cols="2">
                             <b-dropdown
                               variant="outline-success"
                               right
@@ -157,7 +157,7 @@
                               <b-dropdown-item-button class="">
                                 <button
                                   class="btn btn-outline-info btn-block"
-                                  @click.prevent="updatePengalaman(item)"
+                                  @click.prevent="updateExperience(item)"
                                 >
                                   <b-icon
                                     icon="pencil-fill"
@@ -267,6 +267,7 @@
                                         type="text"
                                         class="form-control"
                                         placeholder="Fullstack Developer"
+                                        required
                                         v-model="experience.positionExperience"
                                       />
                                     </div>
@@ -281,6 +282,7 @@
                                           type="text"
                                           class="form-control"
                                           placeholder="PT Apa Aja Boleh"
+                                          required
                                           v-model="experience.companyExperience"
                                         />
                                       </div>
@@ -294,6 +296,7 @@
                                           type="text"
                                           class="form-control"
                                           placeholder="Januari 2088"
+                                          required
                                           v-model="experience.yearsExperience"
                                         />
                                       </div>
@@ -307,6 +310,7 @@
                                       class="form-control"
                                       rows="5"
                                       placeholder="Deskripsi Pekerjaan anda"
+                                      required
                                       v-model="experience.descriptionExperience"
                                     ></textarea>
                                   </div>
@@ -645,11 +649,29 @@ export default {
     },
     addExperience () {
       this.experience.id = this.usersData.id
-      this.insertExperience(this.experience)
-      this.getExperience(this.experience.id)
+      this.insertExperience(this.experience).then((response) => {
+        this.experience.positionExperience = ''
+        this.experience.companyExperience = ''
+        this.experience.yearsExperience = ''
+        this.experience.descriptionExperience = ''
+        this.getExperience(this.experience.id)
+      })
+        .catch((err) => {
+          alert(err)
+        })
+    },
+    updateExperience (item) {
+      this.onUpdateExperience(item).then((response) => {
+        this.$swal('Update experience success')
+        this.getExperience(this.usersData.id)
+      })
+        .catch((err) => {
+          alert(err)
+        })
     },
     deleteExperience (idexperience) {
-      alert(idexperience)
+      this.onDeleteExperience(idexperience)
+      this.getExperience(this.experience.id)
     },
     typePortfolio (value) {
       this.portfolioType = value
@@ -705,6 +727,7 @@ export default {
       insertPortfolio: 'auth/addPortfolio',
       getExperience: 'auth/getExperience',
       insertExperience: 'auth/insertExperience',
+      onUpdateExperience: 'auth/updateExperience',
       onDeleteExperience: 'auth/deleteExperience'
     })
   },
@@ -829,6 +852,9 @@ height: 200px;
   color: #9ea0a5;
   font-size: 13px;
 }
+.title-exp{
+  font-size: 25px;
+}
 .form-control {
   background: #ffffff;
   border: 1px solid #e2e5ed;
@@ -886,6 +912,9 @@ height: 200px;
     border-radius: 8px;
     margin-top: 60px;
   }
+  .title-exp{
+  font-size: 20px;
+}
   .btn-save-recrut {
     width: 100%;
   }
