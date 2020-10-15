@@ -25,9 +25,11 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <router-link to="/home" class="dropdown-item">Home</router-link>
               <div>
-                <button class="dropdown-item" @click="sendId">Profile</button>
+                <button class="dropdown-item" @click="sendId" v-if="userData.role === 0">Profile</button>
+                <button class="dropdown-item" v-else @click="moveToProfile">Profile</button>
               </div>
               <button class="dropdown-item" @click="logOut">Logout</button>
+              <router-link to="/profile" class="dropdown-item" v-if="userData.role === 0">Edit Profile</router-link>
             </div>
           </div>
         </div>
@@ -61,6 +63,9 @@ export default {
     },
     sendId () {
       this.$router.push({ path: '/portofolio', query: { id: this.userData.id } })
+    },
+    moveToProfile () {
+      this.$router.push('/profilerecrut')
     }
   }
 }

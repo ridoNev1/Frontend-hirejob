@@ -16,16 +16,19 @@
               <p class="text-secondary" style="margin-bottom: 0;"><img src="../assets/img/map-pin.png" alt="mappin"> {{detailUser.address}}</p>
               <p class="text-secondary pt-2">{{detailUser.job_type}}</p>
               <p class="bio-user">{{detailUser.description}}</p>
-              <button class="btn hire-button">Hire</button>
+              <div>
+                <span v-if="dataUser.role === 0"></span>
+                <button class="btn hire-button" v-else @click="hire">Hire</button>
+              </div>
               <div class="mt-5">
                 <p class="font-weight-bold">Skill</p>
                 <div class="skill-list-box">
                   <p class="skill-list" v-for="(item, index) in detailUser.skill" :key="index">{{item}}</p>
                 </div>
               </div>
-              <p class="mt-5"><img src="../assets/img/mail.png" class="mr-3" alt="email"> {{detailUser.s_email}}</p>
-              <p><img src="../assets/img/instagram.png" class="mr-3" alt="instagram"> {{detailUser.s_instagram}}</p>
-              <p><img src="../assets/img/github.png" class="mr-3" alt="github"> {{detailUser.s_github}}</p>
+              <p class="mt-5"><img src="../assets/img/mail.png" class="mr-3" alt="email"> email@gmail.com</p>
+              <p><img src="../assets/img/instagram.png" class="mr-3" alt="instagram"> @ig_lveguy</p>
+              <p><img src="../assets/img/github.png" class="mr-3" alt="github"> @gitlovegit</p>
               <p><img src="../assets/img/gitlab.png" class="mr-3" alt="gitlab"> @usergitlab</p>
             </div>
             <div class="navbar-portofolio mt-5">
@@ -115,7 +118,10 @@ export default {
     ...mapActions({
       getDetailUser: 'auth/getOneUser',
       getPortfolio: 'auth/findPortfolio'
-    })
+    }),
+    hire () {
+      this.$router.push('/hire')
+    }
   },
   mounted () {
     const tgl1 = document.querySelector('.switch-toggle')

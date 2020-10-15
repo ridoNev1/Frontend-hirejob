@@ -33,7 +33,17 @@
           </div>
           <div class="chat-box p-4" v-else>
             <div class="chat-room">
-              <div class="chat-portal" v-for="(item, index) in privateChat" :key="index">
+              <!-- history -->
+              <div v-for="(item2, index2) in historyChat" :key="index2">
+                <div class="receiver-chat" v-if="item2.receiver !== dataApplicant">
+                  <p>{{item2.message}}</p>
+                </div>
+                <div class="sender-chat" v-else>
+                  <p>{{item2.message}}</p>
+                </div>
+              </div>
+              <!-- history end -->
+              <div class="chat-portal" v-for="(item, index) in privateChat" :key="'a' + index">
                 <div class="template-message" v-if="item.type_chat === 2">
                   <p>We hire you</p>
                   <div class="company-header" style="display: flex;">
@@ -70,7 +80,6 @@
         </div>
       </div>
     </div>
-    {{userData}}
   </div>
 </template>
 
@@ -93,14 +102,23 @@ export default {
       showChat: 0,
       chat: '',
       roomChat: [],
-      privateChat: []
+      privateChat: [],
+      historyChat: []
     }
   },
   methods: {
     onShowChat (email) {
       this.showChat = 1
+      this.privateChat = []
+      this.roomChat = []
       this.dataApplicant = email
       this.setPrivateChat()
+      this.socket.emit('get-history-message', {
+        sender: this.userData.email,
+        receiver: this.dataApplicant
+      })
+      this.historyMessage()
+      console.log(this.historyChat)
     },
     sendMessage () {
       const data = {
@@ -127,7 +145,12 @@ export default {
     },
     ...mapActions({
       getFriends: 'auth/getFriend'
-    })
+    }),
+    historyMessage () {
+      this.socket.on('history-message', (payload) => {
+        this.historyChat = payload
+      })
+    }
   },
   mounted () {
     // this.socket.emit('get-friends', this.userData)
@@ -232,13 +255,14 @@ export default {
 .chat-room {
   height: 85vh;
   overflow: scroll;
+  padding: 30px;
 }
 .chat-room::-webkit-scrollbar {
   height: 0;
-  width: 2px;
+  width: 1px;
 }
 .chat-room::-webkit-scrollbar-thumb {
-  background-color: rgb(207, 207, 207);
+  background-color: rgb(235, 235, 235);
 }
 /* #5E50A1 */
 .form-chat {
