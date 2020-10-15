@@ -650,6 +650,7 @@ export default {
     addExperience () {
       this.experience.id = this.usersData.id
       this.insertExperience(this.experience).then((response) => {
+        this.$swal('add experience success')
         this.experience.positionExperience = ''
         this.experience.companyExperience = ''
         this.experience.yearsExperience = ''

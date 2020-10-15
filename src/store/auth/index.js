@@ -119,6 +119,7 @@ const actions = {
       axios.get(`${url}/v1/user/${payload}`).then(result => {
         context.commit('SET_DETAIL_USER', result.data.data[0])
         resolve(result.data.data[0])
+        localStorage.setItem('datadetail', JSON.stringify(result.data.data[0]))
       }).catch(err => {
         console.log(err)
       })
@@ -158,6 +159,18 @@ const actions = {
       })
     })
   },
+  updateImage: (context, payload) => {
+    return new Promise((resolve, reject) => {
+      const fd = new FormData()
+      fd.append('image', payload.image)
+      axios.patch(`${url}/v1/user/edit/${payload.id_user}`, fd).then(result => {
+        // resolve(result.data.message)
+        console.log(result)
+      }).catch(err => {
+        console.log(err)
+      })
+    })
+  },
   updateProfileRecruter (context, payload) {
     return new Promise((resolve, reject) => {
       axios.patch(`${url}/v1/user/edit/${payload.id}`, {
@@ -172,7 +185,7 @@ const actions = {
       }).then(result => {
         resolve(result.data.message)
       }).catch((err) => {
-        console.log(err)
+        reject(err)
       })
     })
   },
