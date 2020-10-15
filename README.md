@@ -23,6 +23,21 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+### Requirments
+- Auth with JWT (Login & Register), Logout
+- CRUD (Vuex)
+- User Roles & Privileges
+- Search, Sort & Pagination (Vuex)
+- Image Upload (Filter file)
+- Form Validation
+- URL Parameter
+- User Profile (Detail, Edit)
+- Responsive
+- Send Email
+- Forgot Password (email)
+- Deploy (Frontend & Backend)
+- Chat Realtime
+
 ### Image
 
 ![s1](https://user-images.githubusercontent.com/67420884/96060700-7801f700-0ebb-11eb-9dc0-f1d7e923f911.PNG)
