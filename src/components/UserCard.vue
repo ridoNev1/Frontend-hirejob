@@ -13,7 +13,7 @@
     <div class="user-data mt-3">
       <div class="user-name">
         <h5 class="font-weight-bold" style="margin-bottom: 0;">{{usersData.name_user}}</h5>
-        <p>Comedian</p>
+        <p>{{usersData.job_desk}}</p>
       </div>
       <div>
         <p class="text-secondary" style="margin-bottom: 0;"><img src="../assets/img/map-pin.png" alt="mappin">{{usersData.address}}</p>
