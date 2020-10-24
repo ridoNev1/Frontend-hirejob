@@ -43,6 +43,7 @@ export default {
       const dataimage = {
         image: this.image,
         iduser: this.usersData.id_user
+
       }
       this.updateDataImage(dataimage).then(result => {
         if (result === 'File must be png/jpg/jpeg, max size 1mb') {
@@ -67,7 +68,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 5px;
 }
 .profile-image {
   width: 130px;
@@ -116,5 +117,10 @@ export default {
   .profile-image{
     margin-top: -50px;
   }
+  .custom-file-upload {
+  color: white;
+  padding: 0px;
+  opacity: 0;
+}
 }
 </style>
